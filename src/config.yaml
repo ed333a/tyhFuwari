@@ -125,7 +125,7 @@ banner:
 beauty:
   theme: 'light'      # 主题，支持 'light','dark' 和 'auto' 三种选项，auto 会根据用户系统设置自动切换主题
   hue: 250            # 主题色调, 范围 0-360 
-  hue-fixed: true     # 是否显示主题色调的调色盘
+  hue-fixed: false     # 是否显示主题色调的调色盘，设置为 false 显示
   blur: 
     enable: true      # 是否启用背景模糊效果, 启用后会在背景上添加一个半透明的模糊层, 以增强前景内容的可读性
     intensity: 2      # 模糊半径, 输入整数值, 数值越大模糊效果越明显, 推荐值为 1-5 之间
