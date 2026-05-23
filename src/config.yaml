@@ -153,34 +153,16 @@ beauty:
     # 夜间模式主题色
     dark:
       color-primary: '#2ACAA0'  # 主题色
-      card-bg: '#FFFFFF'
+      card-bg: '#121212'
 
   # body 背景设置, 若同时启用背景图和背景色, 则背景图的显示优先级要高于背景色
   background:
+
+    # 背景图片设置
     image:
-      enable: true    # 是否启用背景
-      # 是否随机切换背景图片, 
-      # 如果为 false 则使用 urls 中的第一张图片, 如果为 true 则在每一次加载页面时随机选择 urls 中的一张图片作为背景
-      # TODO: 启用后会生成一个 json 格式的文本内容, 之后在前端的 js 中实现
-      random: false   
-      urls: 
-        - 'assets/canvas/blog_bg/bg1.svg'   # 背景图片地址，支持多张图片随机切换, 若图片位于 public 目录下, 应当以 '/' 开头
-        - 'assets/canvas/blog_bg/bg2.svg'   # 若图片位于 src 目录下, 则请注意将图片添加到 assets 目录下
-        - 'assets/canvas/blog_bg/bg3.svg'
-        - 'assets/canvas/blog_bg/bg4.svg'
-        - 'assets/canvas/blog_bg/bg5.svg'
-        - 'assets/canvas/blog_bg/bg6.svg'
-        - 'assets/canvas/blog_bg/bg7.svg'
-        - 'assets/canvas/blog_bg/bg8.svg'
-        - 'assets/canvas/blog_bg/bg9.svg'
-        - 'assets/canvas/blog_bg/bg10.svg'
-        - 'assets/canvas/blog_bg/bg11.svg'
-        - 'assets/canvas/blog_bg/bg12.svg'
-        - 'assets/canvas/blog_bg/bg13.svg'
-        - 'assets/canvas/blog_bg/bg14.svg'
-      
-      # svg 图片颜色, 当背景图为纯色的 SVG 图片时, 可以设置此项来自定义 svg 颜色
-      svgColor: '#FFFFFF'
+      enable: true    # 是否启用背景 
+      url: 'assets/images/blog_bg/bg8.svg'    # 背景图片地址, 若图片位于 public 文件夹下, 路径应当以 '/' 开头, 若图片位于 src 文件夹下, 则注意将图片放在 src/assets 文件夹内
+      svgColor: '#FFFFFF'                     # 当背景图为纯色的 SVG 图片时, 可以设置此项来自定义 svg 颜色
 
     # 背景色设置
     color:
