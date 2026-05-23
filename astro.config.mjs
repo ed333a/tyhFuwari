@@ -4,9 +4,15 @@ import tailwind from "@astrojs/tailwind";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import swup from "@swup/astro";
+<<<<<<< HEAD
 import { defineConfig } from "astro/config";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
+=======
+import expressiveCode from "astro-expressive-code";
+import icon from "astro-icon";
+import { defineConfig } from "astro/config";
+>>>>>>> origin/main
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components"; /* Render the custom directive content */
 import rehypeKatex from "rehype-katex";
@@ -15,19 +21,31 @@ import remarkDirective from "remark-directive"; /* Handle directives */
 import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-directives";
 import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
+<<<<<<< HEAD
 import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
+=======
+import { expressiveCodeConfig } from "./src/config.ts";
+>>>>>>> origin/main
 import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge.ts";
 import { AdmonitionComponent } from "./src/plugins/rehype-component-admonition.mjs";
 import { GithubCardComponent } from "./src/plugins/rehype-component-github-card.mjs";
 import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
+<<<<<<< HEAD
+=======
+import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-copy-button.js";
+>>>>>>> origin/main
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://fuwari.vercel.app/",
 	base: "/",
+<<<<<<< HEAD
 	trailingSlash: "ignore",
+=======
+	trailingSlash: "always",
+>>>>>>> origin/main
 	integrations: [
 		tailwind({
 			nesting: true,
@@ -55,17 +73,29 @@ export default defineConfig({
 			},
 		}),
 		expressiveCode({
+<<<<<<< HEAD
 			themes: ["github-dark"],
+=======
+			themes: [expressiveCodeConfig.theme, expressiveCodeConfig.theme],
+>>>>>>> origin/main
 			plugins: [
 				pluginCollapsibleSections(),
 				pluginLineNumbers(),
 				pluginLanguageBadge(),
+<<<<<<< HEAD
 				pluginCustomCopyButton(),
+=======
+				pluginCustomCopyButton()
+>>>>>>> origin/main
 			],
 			defaultProps: {
 				wrap: true,
 				overridesByLang: {
+<<<<<<< HEAD
 					shellsession: {
+=======
+					'shellsession': {
+>>>>>>> origin/main
 						showLineNumbers: false,
 					},
 				},
@@ -75,8 +105,12 @@ export default defineConfig({
 				borderRadius: "0.75rem",
 				borderColor: "none",
 				codeFontSize: "0.875rem",
+<<<<<<< HEAD
 				codeFontFamily:
 					"'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+=======
+				codeFontFamily: "'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+>>>>>>> origin/main
 				codeLineHeight: "1.5rem",
 				frames: {
 					editorBackground: "var(--codeblock-bg)",
@@ -87,11 +121,16 @@ export default defineConfig({
 					editorActiveTabIndicatorBottomColor: "var(--primary)",
 					editorActiveTabIndicatorTopColor: "none",
 					editorTabBarBorderBottomColor: "var(--codeblock-topbar-bg)",
+<<<<<<< HEAD
 					terminalTitlebarBorderBottomColor: "none",
+=======
+					terminalTitlebarBorderBottomColor: "none"
+>>>>>>> origin/main
 				},
 				textMarkers: {
 					delHue: 0,
 					insHue: 180,
+<<<<<<< HEAD
 					markHue: 250,
 				},
 			},
@@ -100,6 +139,16 @@ export default defineConfig({
 			},
 		}),
 		svelte(),
+=======
+					markHue: 250
+				}
+			},
+			frames: {
+				showCopyToClipboardButton: false,
+			}
+		}),
+        svelte(),
+>>>>>>> origin/main
 		sitemap(),
 	],
 	markdown: {

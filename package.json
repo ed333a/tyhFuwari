@@ -59,9 +59,13 @@
     "svelte": "^5.39.8",
     "tailwindcss": "^3.4.19",
     "typescript": "^5.9.3",
+<<<<<<< HEAD
     "unist-util-visit": "^5.0.0",
     "yaml": "^2.9.0",
     "zod": "^4.4.3"
+=======
+    "unist-util-visit": "^5.0.0"
+>>>>>>> origin/main
   },
   "devDependencies": {
     "@astrojs/ts-plugin": "^1.10.6",

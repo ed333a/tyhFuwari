@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { siteConfig } from "../_config";
+=======
+import { siteConfig } from "../config";
+>>>>>>> origin/main
 import type I18nKey from "./i18nKey";
 import { en } from "./languages/en";
 import { es } from "./languages/es";

@@ -2,12 +2,20 @@
 import type { GetStaticPaths } from "astro";
 import Pagination from "../components/control/Pagination.astro";
 import PostPage from "../components/PostPage.astro";
+<<<<<<< HEAD
+=======
+import { PAGE_SIZE } from "../constants/constants";
+>>>>>>> origin/main
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 import { getSortedPosts } from "../utils/content-utils";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const allBlogPosts = await getSortedPosts();
+<<<<<<< HEAD
 	return paginate(allBlogPosts, { pageSize: 75 });
+=======
+	return paginate(allBlogPosts, { pageSize: PAGE_SIZE });
+>>>>>>> origin/main
 }) satisfies GetStaticPaths;
 // https://github.com/withastro/astro/issues/6507#issuecomment-1489916992
 
@@ -18,5 +26,9 @@ const len = page.data.length;
 
 <MainGridLayout>
     <PostPage page={page}></PostPage>
+<<<<<<< HEAD
     <Pagination class="mx-auto" page={page} style={`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`}></Pagination>
+=======
+    <Pagination class="mx-auto onload-animation" page={page} style={`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`}></Pagination>
+>>>>>>> origin/main
 </MainGridLayout>
