@@ -4,7 +4,8 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import ConfigCarrier from "@components/ConfigCarrier.astro";
-import { profileConfig, siteConfig } from "@/config";
+import { bannerConfig, beautyConfig, siteConfig } from "@/types/config";
+
 import {
 	AUTO_MODE,
 	BANNER_HEIGHT,
@@ -16,7 +17,7 @@ import {
 	PAGE_WIDTH,
 } from "../constants/constants";
 import { defaultFavicons } from "../constants/icon";
-import type { Favicon } from "../types/config";
+// import type { Favicon } from "../types/config";
 import { pathsEqual, url } from "../utils/url-utils";
 import "katex/dist/katex.css";
 
@@ -37,15 +38,15 @@ const isHomePage = pathsEqual(Astro.url.pathname, url("/"));
 
 // defines global css variables
 // why doing this in Layout instead of GlobalStyles: https://github.com/withastro/astro/issues/6728#issuecomment-1502203757
-const configHue = siteConfig.themeColor.hue;
+const configHue = beautyConfig.hue;
 if (!banner || typeof banner !== "string" || banner.trim() === "") {
-	banner = siteConfig.banner.src;
+	banner = bannerConfig.src;
 }
 
 // TODO don't use post cover as banner for now
-banner = siteConfig.banner.src;
+banner = bannerConfig.src;
 
-const enableBanner = siteConfig.banner.enable;
+const enableBanner = bannerConfig.enable;
 
 let pageTitle: string;
 if (title) {
@@ -54,22 +55,22 @@ if (title) {
 	pageTitle = `${siteConfig.title} - ${siteConfig.subtitle}`;
 }
 
-const favicons: Favicon[] =
-	siteConfig.favicon.length > 0 ? siteConfig.favicon : defaultFavicons;
+const favicons = siteConfig.favicons;
 
 // const siteLang = siteConfig.lang.replace('_', '-')
 if (!lang) {
-	lang = `${siteConfig.lang}`;
+	lang = `${siteConfig.locale}`;
 }
 const siteLang = lang.replace("_", "-");
 
-const bannerOffsetByPosition = {
-	top: `${BANNER_HEIGHT_EXTEND}vh`,
-	center: `${BANNER_HEIGHT_EXTEND / 2}vh`,
-	bottom: "0",
-};
-const bannerOffset =
-	bannerOffsetByPosition[siteConfig.banner.position || "center"];
+let bannerOffset = "";
+if (bannerConfig.position === "top") {
+	bannerOffset = `${BANNER_HEIGHT_EXTEND}vh`;
+} else if (bannerConfig.position === "center") {
+	bannerOffset = `${BANNER_HEIGHT_EXTEND / 2}vh`;
+} else if (bannerConfig.position === "bottom") {
+	bannerOffset = "0";
+}
 ---
 
 <!DOCTYPE html>
@@ -82,7 +83,7 @@ const bannerOffset =
 
 		<meta charset="UTF-8" />
 		<meta name="description" content={description || pageTitle}>
-		<meta name="author" content={profileConfig.name}>
+		<meta name="author" content={siteConfig.author}>
 
 		<meta property="og:site_name" content={siteConfig.title}>
 		<meta property="og:url" content={Astro.url}>
@@ -145,7 +146,7 @@ const bannerOffset =
 
 		<slot name="head"></slot>
 
-		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
+		<link rel="alternate" type="application/rss+xml" title={siteConfig.author} href={`${Astro.site}rss.xml`}/>
 
 	</head>
 	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
@@ -210,7 +211,7 @@ import {
 	BANNER_HEIGHT_EXTEND,
 	MAIN_PANEL_OVERLAPS_BANNER_HEIGHT
 } from "../constants/constants";
-import { siteConfig } from '../config';
+import { bannerConfig } from '@/types/config';
 
 /* Preload fonts */
 // (async function() {
@@ -352,7 +353,7 @@ function initCustomScrollbar() {
 }
 
 function showBanner() {
-	if (!siteConfig.banner.enable) return;
+	if (!bannerConfig.enable) return;
 
 	const banner = document.getElementById('banner');
 	if (!banner) {

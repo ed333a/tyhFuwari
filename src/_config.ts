@@ -4,8 +4,8 @@ import type {
 	NavBarConfig,
 	ProfileConfig,
 	SiteConfig,
-} from "./types/config";
-import { LinkPreset } from "./types/config";
+} from "./types/_config";
+import { LinkPreset } from "./types/_config";
 
 export const siteConfig: SiteConfig = {
 	title: "Fuwari",
