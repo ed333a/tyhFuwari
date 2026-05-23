@@ -1,9 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
 import { beautyConfig, navConfig, siteConfig } from "@/types/config";
-// import { navBarConfig, siteConfig } from "../config";
-// import { LinkPreset, type NavBarLink } from "../types/config";
-import { LinkPresets } from "../constants/link-presets";
 import { url } from "../utils/url-utils";
 import LightDarkSwitch from "./LightDarkSwitch.svelte";
 import Search from "./Search.svelte";
@@ -11,15 +8,6 @@ import DisplaySettings from "./widget/DisplaySettings.svelte";
 import NavMenuPanel from "./widget/NavMenuPanel.astro";
 
 const className = Astro.props.class;
-
-// let links: NavBarLink[] = navBarConfig.links.map(
-// 	(item: NavBarLink | LinkPreset): NavBarLink => {
-// 		if (typeof item === "number") {
-// 			return LinkPresets[item];
-// 		}
-// 		return item;
-// 	},
-// );
 ---
 <div id="navbar" class="z-50 onload-animation">
     <div class="absolute h-8 left-0 right-0 -top-8 bg-[var(--card-bg)] transition"></div> <!-- used for onload animation -->
@@ -38,6 +26,7 @@ const className = Astro.props.class;
                           class="btn-plain scale-animation rounded-lg h-11 font-bold px-5 active:scale-95"
                 >
                     <div class="flex items-center">
+                        <Icon name={l.icon} class="mr-[10px] text-[0.875rem] transition -translate-y-[1px] ml-1 text-black/[0.2] dark:text-white/[0.2]"></Icon>
                         {l.text}
                         {l.openInExternal && <Icon name="fa6-solid:arrow-up-right-from-square" class="text-[0.875rem] transition -translate-y-[1px] ml-1 text-black/[0.2] dark:text-white/[0.2]"></Icon>}
                     </div>

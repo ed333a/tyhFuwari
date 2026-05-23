@@ -9,6 +9,7 @@ siteConfig:
   siteUrl: https://example.com  # 此站点地址在文章底部版权内容中用到
   
   # 文章底部的许可证信息
+  page-width: 75rem
   license:
     enable: true
     name: CC-BY-NC-SA 4.0
@@ -106,6 +107,9 @@ nav:
     - link: '/about'
       text: 关于我
       icon: fa6-solid:user
+    - link: '/friends'
+      text: 友情链接
+      icon: fa6-solid:envelope
 
 #######################################
 # 顶部 banner 图片
@@ -115,9 +119,14 @@ banner:
   src: 'assets/images/demo-banner.png'
   position: 'center'  # 相当于 object-positon, 可选择的项有 top,center,bottom
   credit:
-    enable: false     # 在 banner 左下角展示图片的版权信息
+    enable: true     # 在 banner 左下角展示图片的版权信息
     text: ''          # 版权信息的文本内容
     url: ''           # (可选) banner 图片的源地址链接
+  
+  # banner 大小的一些设置
+  banner-height: 65vh
+  banner-height-extend: 30vh
+  banner-overlap: 3.5rem
 
 #######################################
 # 站点美化配置
@@ -137,9 +146,9 @@ beauty:
   themeColors:
     # 日间模式主题色
     light:
-      color-primary: 'rgba(42,202,160,1.00)'  # 主题色
-      card-bg: 'rgba(255,255,255,0.8)'        # 卡片的背景色，同时也是顶部导航栏的背景色
-      text-primary: '#121212'
+      color-primary: '#2ACAA0'  # 主题色
+      card-bg: '#FFFFFF'        # 卡片的背景色，同时也是顶部导航栏的背景色
+      text-primary: '#121212'   # 文本的主色调
 
     # 夜间模式主题色
     dark:

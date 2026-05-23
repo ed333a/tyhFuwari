@@ -27,19 +27,18 @@ const siteConfigSchema = z.object({
 			.string()
 			.default("https://creativecommons.org/licenses/by-nc-sa/4.0/"),
 	}),
-	favicons: z
-		.array(
-			z.object({
-				src: z.string(),
-				theme: z.string(),
-				sizes: z.string(),
-			}),
-		)
-		.optional(),
+	favicons: z.array(
+		z.object({
+			src: z.string(),
+			theme: z.string(),
+			sizes: z.string(),
+		}),
+	),
 	toc: z.object({
 		enable: z.boolean().default(false),
 		depth: z.int().default(2),
 	}),
+	"page-width": z.string().default("75rem"),
 });
 
 const beautyConfigSchema = z.object({
@@ -120,6 +119,9 @@ const bannerConfigSchema = z.object({
 		text: z.string().default(""),
 		url: z.string().default(""),
 	}),
+	"banner-height": z.string().default("35vh"),
+	"banner-height-extend": z.string().default("30vh"),
+	"banner-overlap": z.string().default("3.5rem"),
 });
 
 const devConfigSchema = z.object({

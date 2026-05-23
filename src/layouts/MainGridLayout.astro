@@ -8,11 +8,6 @@ import { Icon } from "astro-icon/components";
 import { bannerConfig, siteConfig } from "@/types/config";
 import ImageWrapper from "../components/misc/ImageWrapper.astro";
 import TOC from "../components/widget/TOC.astro";
-import {
-	BANNER_HEIGHT,
-	BANNER_HEIGHT_EXTEND,
-	MAIN_PANEL_OVERLAPS_BANNER_HEIGHT,
-} from "../constants/constants";
 import Layout from "./Layout.astro";
 
 interface Props {
@@ -36,7 +31,7 @@ const hasBannerCredit = bannerConfig.enable && bannerConfig.credit.enable;
 const hasBannerLink = !!bannerConfig.credit.url;
 
 const mainPanelTop = bannerConfig.enable
-	? `calc(${BANNER_HEIGHT}vh - ${MAIN_PANEL_OVERLAPS_BANNER_HEIGHT}rem)`
+	? `calc(${bannerConfig["banner-height"]} - ${bannerConfig["banner-overlap"]})`
 	: "5.5rem";
 ---
 
@@ -51,7 +46,7 @@ const mainPanelTop = bannerConfig.enable
 </div>
 
 <!-- Banner -->
-{bannerConfig.enable && <div id="banner-wrapper" class={`absolute z-10 w-full transition duration-700 overflow-hidden`} style={`top: -${BANNER_HEIGHT_EXTEND}vh`}>
+{bannerConfig.enable && <div id="banner-wrapper" class={`absolute z-10 w-full transition duration-700 overflow-hidden`} style={`top: -${bannerConfig["banner-height-extend"]}`}>
     <ImageWrapper id="banner" alt="Banner image of the blog" class:list={["object-cover h-full transition duration-700 opacity-0 scale-105"]}
                   src={bannerConfig.src} position={bannerConfig.position}
     >
