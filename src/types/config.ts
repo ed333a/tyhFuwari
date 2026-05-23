@@ -14,12 +14,10 @@ const siteConfigSchema = z.object({
     avatar: z.string().default("assets/images/demo-avatar.png"),
     title: z.string().default("Astro little-sweet"),
     subtitle: z.string().default("A static blog template built with Astro"),
-    description: z
-        .string()
-        .default(
-            "A static blog template built with Astro, and with human-friendly configuration.",
-        ),
+    description: z.string().default("A static blog template built with Astro, and with human-friendly configuration.",),
     locale: z.string().default("zh_CN"),
+    siteUrl: z.string().default("https://example.com"),
+    "page-width": z.string().default("75rem"),
     license: z.object({
         enable: z.boolean().default(true),
         name: z.string().default("CC-BY-NC-SA 4.0"),
@@ -38,7 +36,6 @@ const siteConfigSchema = z.object({
         enable: z.boolean().default(false),
         depth: z.int().default(2),
     }),
-    "page-width": z.string().default("75rem"),
 });
 
 const beautyConfigSchema = z.object({
