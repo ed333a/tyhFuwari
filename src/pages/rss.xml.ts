@@ -4,11 +4,7 @@ import { url } from "@utils/url-utils";
 import type { APIContext } from "astro";
 import MarkdownIt from "markdown-it";
 import sanitizeHtml from "sanitize-html";
-<<<<<<< HEAD
-import { siteConfig } from "@/_config";
-=======
-import { siteConfig } from "@/config";
->>>>>>> origin/main
+import { siteConfig } from "@/types/config";
 
 const parser = new MarkdownIt();
 
@@ -41,6 +37,6 @@ export async function GET(context: APIContext) {
 				}),
 			};
 		}),
-		customData: `<language>${siteConfig.lang}</language>`,
+		customData: `<language>${siteConfig.locale}</language>`,
 	});
 }

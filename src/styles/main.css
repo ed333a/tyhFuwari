@@ -2,12 +2,8 @@
 
 @layer components {
     .card-base {
-<<<<<<< HEAD
         @apply rounded-[var(--border-radius)] overflow-hidden bg-[var(--card-bg)] transition;
         backdrop-filter: blur(var(--blur));
-=======
-        @apply rounded-[var(--radius-large)] overflow-hidden bg-[var(--card-bg)] transition;
->>>>>>> origin/main
     }
     h1, h2, h3, h4, h5, h6, p, a, span, li, ul, ol, blockquote, code, pre, table, th, td, strong {
         @apply transition;
@@ -26,11 +22,7 @@
         @apply transition rounded-md p-1.5 -m-1.5 expand-animation;
     }
     .float-panel {
-<<<<<<< HEAD
         @apply top-[5.25rem] rounded-[var(--border-radius)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-xl dark:shadow-none
-=======
-        @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-xl dark:shadow-none
->>>>>>> origin/main
     }
     .float-panel-closed {
         @apply -translate-y-1 opacity-0 pointer-events-none
@@ -41,12 +33,8 @@
 
     .btn-card {
         @apply transition flex items-center justify-center bg-[var(--card-bg)] hover:bg-[var(--btn-card-bg-hover)]
-<<<<<<< HEAD
         active:bg-[var(--btn-card-bg-active)];
         backdrop-filter: blur(var(--blur));
-=======
-        active:bg-[var(--btn-card-bg-active)]
->>>>>>> origin/main
     }
     .btn-card.disabled {
         @apply pointer-events-none text-black/10 dark:text-white/10
