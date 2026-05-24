@@ -7,11 +7,14 @@ import { getSortedPosts } from "../utils/content-utils";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const allBlogPosts = await getSortedPosts();
-	return paginate(allBlogPosts, { pageSize: 75 });
+	return paginate(allBlogPosts, { pageSize: 6 });
 }) satisfies GetStaticPaths;
 // https://github.com/withastro/astro/issues/6507#issuecomment-1489916992
 
 const { page } = Astro.props;
+
+// import fs from "fs";
+// fs.writeFileSync("./allblogposts.json", JSON.stringify(await getSortedPosts(), null, 2));
 
 const len = page.data.length;
 ---

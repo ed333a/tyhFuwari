@@ -1,10 +1,10 @@
 # 站点配置
 siteConfig:
   author: Your Name
-  avatar: assets/images/demo-avatar.png
-  title: Astro Fuwari Rev.TYH
-  subtitle: A static blog template built with Astro
-  description: A static blog template built with Astro, and with human-friendly configuration.
+  avatar: assets/images/avatar.jpg
+  title: 硬件日记
+  subtitle: 日常分享 · 硬件设计 · 经验踩坑
+  description: 分享单片机、FPGA 开发，和 PCB 设计经验，记录嵌入式开发路上的成长点滴。
   locale: zh_CN # 站点语言
   siteUrl: https://example.com  # 此站点地址在文章底部版权内容中用到
   
@@ -27,50 +27,6 @@ siteConfig:
   toc:
     enable: true
     depth: 2
-
-  # 文章链接格式配置，支持以下占位符：
-  # :slug ------->  文章的 slug，slug 是根据文章标题自动生成的 URL 友好字符串, 中文会被转换为拼音
-  # :year ------->  文章发表时间的年份,
-  # :month ------>  文章发表时间的月份, 个位时补 0
-  # :day -------->  文章发表时间的日期, 个位时补 0
-  # :hour ------->  文章发表时间的小时, 个位时补 0
-  # :min -------->  文章发表时间的分钟, 个位时补 0
-  # :sec -------->  文章发表时间的秒数, 个位时补 0
-  # :category --->  文章的第一个分类, 如果没有分类则使用 'uncategorized'
-  # :timestamp -->  文章发表时间的时间戳
-  # :crc32 ------>  由文章标题和内容计算的 CRC32 校验值 
-  #                 注意: 由于 CRC32 校验值是根据文章标题和内容计算的, 因此在文章标题或内容发生变化时 CRC32 校验值也会随之改变, 
-  #                 这可能会导致文章链接发生变化, 因此不建议使用 :crc32 占位符, 除非你有特殊需求并且能够接受文章链接可能发生变化的情况
-  # :id --------->  文章的唯一 ID, 长度为 8 位 hex 值, 通过创建文章命令生成新文章时自动分配, (手动创建的文章将会在第一次加载时自动分配, )
-  #                 分配时以创建时间 (精确到毫秒的时间戳) 和文章标题的 CRC32 校验值为基础生成一个唯一的 ID, 并且此后不会再改变
-  # :id_dec ----->  文章的唯一 ID 的十进制表示, 长度为 10 位数字, 当 id 的十进制表示位数不足 10 位时自动补 0
-  postPermalink: /posts/:id_dec  # 文章链接格式，:id 会被替换为文章的唯一 ID
-  # 本模板内供的一些页面可以在下面开启或关闭使用
-  pages:
-    categories:
-      enable: true
-      link: /categories
-    tags:
-      enable: true
-      link: /tags
-    about:
-      enable: true
-      link: /about
-    friends:
-      enable: true
-      link: /friends
-    timeline:
-      enable: true
-      link: /timeline
-    archive:
-      enable: true
-      link: /archive
-    rss:
-      enable: true
-      link: /rss.xml
-    atom:
-      enable: true
-      link: /atom.xml
 
 #######################################
 # 社交媒体链接，显示在页面左侧的个人信息中

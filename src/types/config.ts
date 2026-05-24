@@ -42,26 +42,6 @@ const siteConfigSchema = z.object({
         enable: z.boolean().default(false),
         depth: z.int().default(2),
     }),
-    postPermalink: z.string().default("/posts/:id_dec"),
-    pages: z.object({
-        categories: sitepageSchema,
-        tags: sitepageSchema,
-        about: sitepageSchema,
-        friends: sitepageSchema,
-        timeline: sitepageSchema,
-        archive: sitepageSchema,
-        rss: sitepageSchema,
-        atom: sitepageSchema,
-    }).default({
-        categories: {enable: true, link: "/categories",},
-        tags: {enable: true, link: "/tags",},
-        about: {enable: true, link: "/about",},
-        friends: {enable: true, link: "/friends",},
-        timeline: {enable: true, link: "/timeline",},
-        archive: {enable: true, link: "/archive",},
-        rss: {enable: true, link: "/rss",},
-        atom: {enable: true, link: "/atom",},
-    })
 });
 
 const beautyConfigSchema = z.object({

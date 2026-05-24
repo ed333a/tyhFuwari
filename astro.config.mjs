@@ -23,10 +23,11 @@ import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import yaml from '@rollup/plugin-yaml';
+import { siteConfig } from "./src/types/config.ts"
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://fuwari.vercel.app/",
+	site: siteConfig.siteUrl ?? "undefined site url",
 	base: "/",
 	trailingSlash: "ignore",
 	integrations: [
