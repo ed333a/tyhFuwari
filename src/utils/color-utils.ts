@@ -5,8 +5,11 @@
  * @returns RGBA 字符串，如 "rgba(255, 255, 255, 1)"；若格式无效则返回空字符串
  */
 export function hexToRGBA(hex: string | undefined, alpha = 1): string {
+	
+	if (!hex) return "#FFFFFF";		   // 确保传入的 hex 值不为空值
+	if (!hex.startsWith("#")) return hex;	// 如果传入的颜色值不为 hex 格式则原路返回
+
 	// 移除开头的 '#'
-    if (!hex) return "#FFFFFF";
 	let cleanHex = hex.replace(/^#/, "");
 
 	// 处理缩写形式 (#fff -> ffffff)
