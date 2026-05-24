@@ -18,7 +18,7 @@ function getImageUrl(relativePath: string): string {
 	const fullPath = `../${relativePath}`;
 	const url = imageModules[fullPath];
 	if (!url) {
-		console.warn(`图片未找到: ${fullPath}`);
+		console.warn(`[Background] 全局背景图片未找到: ${fullPath}. 请确认图片是否位于正确的文件夹下, 若图片位于 public 文件夹下, 配置文件中的路径应当以 '/' 开头.`);
 		return "";
 	}
 	return url;
