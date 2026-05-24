@@ -68,11 +68,13 @@ const beautyConfigSchema = z.object({
             linear: z.boolean().default(true),
             deg: z.int().default(135),
             colors: z.array(z.string()).default(["#CCFF00", "#FFCC00", "#FF5577"]),
+            'colors-dark': z.array(z.string()).default(["#145545", "#3e235b", "#1e0a0e"]),
         }).default({
             enable: true,
             deg: 135,
             linear: true,
             colors: ["#CCFF00", "#FFCC00", "#FF5577"],
+            'colors-dark': ["#145545", "#3e235b", "#1e0a0e"],
         }),
     }),
 });

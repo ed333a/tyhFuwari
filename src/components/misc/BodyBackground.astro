@@ -24,8 +24,7 @@ let hasColorLayer = false;
 
 if (bgColorCfg.enable) {
 	if (bgColorCfg.linear && bgColorCfg.colors.length >= 2) {
-		const gradientColors = bgColorCfg.colors.slice(0, 3).join(", ");
-		colorLayerStyle = `background-image: linear-gradient(${bgColorCfg.deg}deg, ${gradientColors});`;
+		colorLayerStyle = `background-image: var(--bg-linear)`;
 		hasColorLayer = true;
 	} else if (bgColorCfg.colors.length >= 1) {
 		colorLayerStyle = `background-color: ${bgColorCfg.colors[0]};`;
@@ -35,7 +34,9 @@ if (bgColorCfg.enable) {
 ---
 
 
-<style>
+<style define:vars={{
+    test: 'abc'
+}}>
     /* 背景层样式 */
     .bg-layer {
         position: fixed;

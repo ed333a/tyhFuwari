@@ -63,6 +63,9 @@ if (bannerConfig.position === "top") {
 
 // 背景层
 import BodyBackground from "@components/misc/BodyBackground.astro";
+
+const bgColorList = beautyConfig.background.color.colors;
+const bgColorList_dark = beautyConfig.background.color["colors-dark"];
 ---
 
 <!DOCTYPE html>
@@ -165,6 +168,8 @@ import BodyBackground from "@components/misc/BodyBackground.astro";
 	'border-radius': `${beautyConfig["border-radius"]}`,
 	'card-blur': `${beautyConfig.blur.enable ? beautyConfig.blur.intensity + "px" : "0px"}`,
 	'bg-blur': `${beautyConfig.background.blur}px`,
+	'bg-linear-dark': `linear-gradient(${beautyConfig.background.color.deg}deg, ${bgColorList_dark[0]}, ${bgColorList_dark.length > 2 ? bgColorList_dark[1] + "," + bgColorList_dark[2] : bgColorList_dark[1]})`,
+	'bg-linear-light': `linear-gradient(${beautyConfig.background.color.deg}deg, ${bgColorList[0]}, ${bgColorList.length > 2 ? bgColorList[1] + "," + bgColorList[2] : bgColorList[1]})`,
 }}>
 @tailwind components;
 @layer components {
