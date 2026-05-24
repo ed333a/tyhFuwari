@@ -164,7 +164,8 @@ beauty:
 
   # body 背景设置, 若同时启用背景图和背景色, 则背景图的显示优先级要高于背景色
   background:
-
+    # 为背景添加一个模糊效果
+    blur: 1 # 模糊半径, 推荐 1-2, 设置为 0 则表示不模糊
     # 背景图片设置
     image:
       enable: true    # 是否启用背景 
@@ -173,14 +174,17 @@ beauty:
 
     # 背景色设置
     color:
-      enable: true  # 启用背景色
-      linear: true  # 是否启用渐变色背景, 如果为 false 则使用颜色列表中的第一个颜色, 为 true 则需要至少提供 2 种颜色, 至多 3 种。
-      deg: 135       # 渐变旋色转角度, 输入整数值 0-360
-      colors:       # 颜色列表, 最多可以有三个
+      enable: true    # 启用背景色
+      linear: true    # 是否启用渐变色背景, 如果为 false 则使用颜色列表中的第一个颜色, 为 true 则需要至少提供 2 种颜色, 至多 3 种。
+      deg: 135        # 渐变旋色转角度, 输入整数值 0-360
+      colors:         # 日间模式颜色列表, 最多可以有三个
         - '#2AA789'
         - '#8c51cd'
         - '#FF5577'
-
+      colors-dark:    # 夜间模式颜色表, 最多可以有三个
+        - '#145545'
+        - '#3e235b'
+        - '#1e0a0e'
 ```
 
 ## 魔改后的样图
@@ -189,7 +193,6 @@ beauty:
 ```text
 注意：配置文件中未实现全部的功能, 后续会慢慢加上去的, 下面仅列出 key 值
 
-siteConfig.keywords
 siteConfig.postPermalink
 siteConfig.pages
 beauty.themeColors
