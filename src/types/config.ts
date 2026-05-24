@@ -32,6 +32,7 @@ const siteConfigSchema = z.object({
             sizes: z.string(),
         }),
     ),
+    keywords: z.array(z.string()).default([]),
     toc: z.object({
         enable: z.boolean().default(false),
         depth: z.int().default(2),
