@@ -15,10 +15,23 @@ import { formatDateToYYYYMMDD } from "../../utils/date-utils";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
-	return blogEntries.map((entry) => ({
-		params: { slug: entry.slug },
-		props: { entry },
-	}));
+	// return blogEntries.map((entry) => ({
+	// 	params: { slug: entry.slug },
+	// 	props: { entry },
+	// }));
+
+    return blogEntries.flatMap((entry) => {
+        if (!entry.data.postID) {
+            throw new Error(`Post ${entry.data.title} is missing postID.`);
+        }
+
+        return [
+            {
+                params: { slug: entry.data.postID },
+                props: { entry },
+            },
+        ];
+    })
 }
 
 const { entry } = Astro.props;
