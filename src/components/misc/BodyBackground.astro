@@ -49,11 +49,13 @@ if (bgColorCfg.enable) {
     /* 图片层 */
     .bg-image-layer {
         z-index: 0;
+        
     }
 
     /* 颜色层*/
     .bg-color-layer {
         z-index: 1;
+        filter: blur(var(--bg-blur));
     }
 
     /* 内容层 */

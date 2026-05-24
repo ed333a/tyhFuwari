@@ -163,7 +163,8 @@ import BodyBackground from "@components/misc/BodyBackground.astro";
 	'card-bg-light': `${hexToRGBA(beautyConfig.themeColors.light["card-bg"], beautyConfig.bgColorAlpha)}`,
 	'card-bg-dark': `${hexToRGBA(beautyConfig.themeColors.dark?.["card-bg"], beautyConfig.bgColorAlpha)}`,
 	'border-radius': `${beautyConfig["border-radius"]}`,
-	'blur': `${beautyConfig.blur.enable ? beautyConfig.blur.intensity + "px" : "0px"}`,
+	'card-blur': `${beautyConfig.blur.enable ? beautyConfig.blur.intensity + "px" : "0px"}`,
+	'bg-blur': `${beautyConfig.background.blur}px`,
 }}>
 @tailwind components;
 @layer components {

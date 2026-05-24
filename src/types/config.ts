@@ -57,6 +57,7 @@ const beautyConfigSchema = z.object({
         dark: themeColorSchema.optional(),
     }),
     background: z.object({
+        blur: z.int().default(1),
         image: z.object({
             enable: z.boolean().default(true),
             url: z.string().default("assets/canvas/blog_bg/bg8.svg"),
