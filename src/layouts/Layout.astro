@@ -65,6 +65,11 @@ import BodyBackground from "@components/misc/BodyBackground.astro";
 
 const bgColorList = beautyConfig.background.color.colors;
 const bgColorList_dark = beautyConfig.background.color["colors-dark"];
+
+// 引入样式
+import "@/styles/variables.styl"
+import "@/styles/markdown-extend.styl"
+import "@/styles/main.css"
 ---
 
 <!DOCTYPE html>
@@ -133,10 +138,6 @@ const bgColorList_dark = beautyConfig.background.color["colors-dark"];
 			offset = offset - offset % 4;
 			document.documentElement.style.setProperty('--banner-height-extend', `${offset}px`);
 		</script>
-		<style define:vars={{
-			configHue,
-			'page-width': `${siteConfig["page-width"]}`,
-		}}></style>  <!-- defines global css variables. This will be applied to <html> <body> and some other elements idk why -->
 
 		<slot name="head"></slot>
 
@@ -166,6 +167,7 @@ const bgColorList_dark = beautyConfig.background.color["colors-dark"];
 	'bg-blur': `${beautyConfig.background.blur}px`,
 	'bg-linear-dark': `linear-gradient(${beautyConfig.background.color.deg}deg, ${bgColorList_dark[0]}, ${bgColorList_dark.length > 2 ? bgColorList_dark[1] + "," + bgColorList_dark[2] : bgColorList_dark[1]})`,
 	'bg-linear-light': `linear-gradient(${beautyConfig.background.color.deg}deg, ${bgColorList[0]}, ${bgColorList.length > 2 ? bgColorList[1] + "," + bgColorList[2] : bgColorList[1]})`,
+	'page-width': `${siteConfig["page-width"]}`,
 }}>
 @tailwind components;
 @layer components {

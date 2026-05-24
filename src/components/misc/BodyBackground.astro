@@ -34,9 +34,7 @@ if (bgColorCfg.enable) {
 ---
 
 
-<style define:vars={{
-    test: 'abc'
-}}>
+<style>
     /* 背景层样式 */
     .bg-layer {
         position: fixed;
@@ -66,15 +64,6 @@ if (bgColorCfg.enable) {
         z-index: 2;
     }
 </style>
-
-<!-- 背景层, 图片层位于颜色层之上
-<div class="bg-layer bg-image-layer" style={imageLayerStyle} aria-hidden="true">
-    {
-        colorLayerStyle && (
-            <div class="bg-layer bg-color-layer" style={colorLayerStyle} aria-hidden="true"/>
-        )
-    }
-</div> -->
 
 <div class="bg-layer bg-color-layer" style={colorLayerStyle} aria-hidden="true">
     {

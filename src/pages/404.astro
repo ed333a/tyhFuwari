@@ -1,0 +1,148 @@
+---
+import LayoutWithoutSidebar from "@/layouts/LayoutWithoutSideBar.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<LayoutWithoutSidebar>
+
+<div class="card-base glass-card relative w-full mx-auto my-8 py-12 px-10 text-center">
+    <div class="
+        text-neutral-900 dark:text-neutral-100 text-[0.9rem] bg-[rgba(0,0,0,0.05)]
+        dark:bg-[rgba(255,255,255,0.05)] rounded-full mb-[1.8rem] py-[0.4rem] px-[1.2rem]
+        border-[0.5px] border-indigo-300/40 w-fit justify-center items-center inline-flex
+    ">
+        <span class="text-[1.2rem] drop-shadow-[0_0_3px_#a78bfa]">🛸</span> 
+        导航信号中断 · 坐标漂移 
+        <span class="text-[1.2rem] drop-shadow-[0_0_3px_#a78bfa]">🌌</span>
+    </div>
+
+    <div class="error-code">404</div>
+
+    <div class="glow-text text-[2.3rem] font-[600] text-[var(--primary)]">
+        ✦ 跃迁失败 ✦
+    </div>
+
+    <div class="
+        text-[1.05rem] leading-[1.6] text-neutral-900 dark:text-neutral-100
+        mt-[1.2rem] mb-[2rem] py-[0] px-[1rem] mw-[550px] ml-auto mr-auto
+    ">
+        哎呀，看起来您探索的页面已经消失在星际迷雾中，可能被外星人捕获，或是被流星雨带走了。
+        <br>
+        不如返回地球基地，重新校准导航？
+    </div>
+
+    <!-- 按钮: 返回首页/返回上一页 -->
+    <div class="
+        flex wrap gap-[1.2rem] justify-center mt-[1.2rem] mb-[1rem]
+    ">
+        <a class="btn404
+            text-neutral-100 dark:text-neutral-100
+            bg-[linear-gradient(105deg,_#3b49df,_#6366f1)]
+            hover:bg-[linear-gradient(105deg,_#4f5cf0,_#7c3aed)]
+        " id="homeBtn" href="/">
+            <Icon name="fa6-solid:house"/> 
+            <span>返回首页</span>
+        </a>
+        <button class="btn404 btn-back-home
+                text-neutral-900 dark:text-neutral-100
+        " id="goBackBtn">
+            <Icon name="fa6-solid:arrow-left"/> 
+            <span>返回上一页</span>
+        </button>
+    </div>
+</div>
+    
+</LayoutWithoutSidebar>
+
+<script>
+    (function() {
+        
+        // 返回上一页功能
+        const backBtn = document.getElementById('goBackBtn');
+        console.log("script loaded");
+        if (backBtn) {
+            backBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    // 如果没有历史记录, 跳转至首页
+                    window.location.href = '/';
+                }
+            });
+        }
+
+        // 加载完后的背景动画
+        const styleBreathing = document.createElement('style');
+        styleBreathing.textContent = `
+            @keyframes gentlePulse {
+                0% { backdrop-filter: blur(12px); }
+                100% { backdrop-filter: blur(14px); }
+            }
+            .glass-card {
+                animation: glassFadeIn 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            }
+            @keyframes glassFadeIn {
+                0% { opacity: 0; transform: translateY(30px) scale(0.96); }
+                100% { opacity: 1; transform: translateY(0px) scale(1); }
+            }
+        `;
+        document.head.appendChild(styleBreathing);
+
+        // 埋一个小彩蛋😜
+        console.log("%c✨ 404 探索者，欢迎来到星际边界 ✨", "color: #a5f3fc; font-size: 20px; font-weight: bold;");
+        console.log("%c您寻找的页面可能正在外太空漫游，点击导航返回家园吧~", "color: #cbd5e6; font-size: 12px;");
+    }) ();
+</script>
+
+<style>
+    .btn404 {
+        @apply inline-flex items-center 
+            gap-[0.6rem] py-[0.9rem] px-[2rem]
+            rounded-full border-[1.5px] border-indigo-300/40
+            font-[900] shadow-[0_8px_18px_-8px_rgba(59,73,223,0.4)]
+            hover:shadow-[0_15px_25px_-10px_rgba(99,102,241,0.5)];
+        
+        transition: all 0.25s ease;
+    }
+
+    .btn404:hover{
+        transform: translateY(-3px);
+    }
+
+    .glass-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .glass-card:hover {
+        transform: translateY(-2px);
+    }
+
+    .error-code {
+        font-size: clamp(6rem, 20vw, 12rem);
+        font-weight: 900;
+        line-height: 1;
+        background: linear-gradient(135deg, #60a5fa, #a78bfa, #4ade80, #22d3ee);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: gradientShift 8s ease infinite, levitate 5s ease-in-out infinite;
+        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.03em;
+        font-family: 'Consolas', monospace;
+    }
+
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @keyframes levitate {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0px); }
+    }
+</style>
