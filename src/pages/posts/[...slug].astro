@@ -12,17 +12,19 @@ import { siteConfig } from "@/types/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
+import { generateIdForPost } from "@/utils/post-utils"
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
-	// return blogEntries.map((entry) => ({
-	// 	params: { slug: entry.slug },
-	// 	props: { entry },
-	// }));
 
     return blogEntries.flatMap((entry) => {
         if (!entry.data.postID) {
-            throw new Error(`Post ${entry.data.title} is missing postID.`);
+            generateIdForPost(entry.filePath || "");
+            return [];
+        }
+
+        if (!entry.data.postID) {
+            throw new Error("Id not found.")
         }
 
         return [
