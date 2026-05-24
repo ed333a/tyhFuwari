@@ -3,7 +3,6 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import ConfigCarrier from "@components/ConfigCarrier.astro";
 import { bannerConfig, beautyConfig, siteConfig } from "@/types/config";
 import { hexToRGBA } from "@/utils/color-utils";
 
@@ -144,10 +143,7 @@ const bgColorList_dark = beautyConfig.background.color["colors-dark"];
 		<link rel="alternate" type="application/rss+xml" title={siteConfig.author} href={`${Astro.site}rss.xml`}/>
 
 	</head>
-	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
-		  data-overlayscrollbars-initialize
-	>	
-		<ConfigCarrier/>
+	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]} data-overlayscrollbars-initialize>
 
 		<!-- 全局背景 -->
 		<BodyBackground>
