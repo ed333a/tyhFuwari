@@ -30,7 +30,7 @@ siteConfig:
 
   pagination:
     posts-perpage: 6            # 每一页的文章数量
-    pagePrefix: "page"          # 分页地址的前缀，如 page1 表示第一页, page2 表示第二页, 以此类推, 注意不要有空格
+    pagePrefix: "pages/p"       # 分页地址的前缀，如 page1 表示第一页, page2 表示第二页, 以此类推, 注意不要有空格
     pageSuffix: ""              # 后缀
     page1-redirect-root: true   # 是否将第一页重定向到根页面
 
@@ -127,7 +127,9 @@ beauty:
     # 背景图片设置
     image:
       enable: true    # 是否启用背景 
-      url: 'assets/images/blog_bg/bg8.svg'    # 背景图片地址, 若图片位于 public 文件夹下, 路径应当以 '/' 开头, 若图片位于 src 文件夹下, 则注意将图片放在 src/assets 文件夹内
+      url: 'assets/images/blog_bg/bg8.svg'    # 背景图片地址, 若图片位于 public 文件夹下, 路径应当以 '/' 开头, 若图片位于 src 文件夹下, 
+                                              # 则注意将图片放在 src/assets 文件夹内, 为了防止在 build 静态页面时产生额外的文件，额外的背景 svg 已被移动到
+                                              # svgs 文件夹内
       svgColor: '#FFFFFF'                     # 当背景图为纯色的 SVG 图片时, 可以设置此项来自定义 svg 颜色
       repeat-x: true                          # 控制图片在水平方向上重复
       repeat-y: false                         # 控制图片在垂直方向上重复
