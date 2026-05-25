@@ -12,10 +12,26 @@ const bgSvgColor = bgImgCfg.svgColor;
 // ---------- 图片层样式 ----------
 let imageLayerStyle = "";
 if (bgImgCfg.enable && backgroundUrl) {
-	imageLayerStyle = `-webkit-mask-image: url(${backgroundUrl}); background-size: auto; background-position: center; background-repeat: repeat-x;`;
-	if (backgroundUrl.endsWith("svg") && bgSvgColor) {
+    if (bgImgCfg.fill) {
+        imageLayerStyle = "background-size: cover;"
+    } else if (bgImgCfg["repeat-x"] && bgImgCfg["repeat-y"]) {
+        imageLayerStyle = "background-repeat: repeat;"
+    } else {
+        if (bgImgCfg["repeat-x"] && !bgImgCfg["repeat-y"]) {
+            imageLayerStyle = "background-repeat: repeat-x;"
+        } else if (!bgImgCfg["repeat-x"] && bgImgCfg["repeat-y"]) {
+            imageLayerStyle = "background-repeat: repeat-y;"
+        } else {
+            imageLayerStyle = "background-repeat: no-repeat;"
+        }
+    }
+
+    if (backgroundUrl.endsWith("svg") && bgSvgColor) {
+        imageLayerStyle += `-webkit-mask-image: url(${backgroundUrl}); background-position: center;`;
 		imageLayerStyle += `background-color: ${bgSvgColor};`;
-	}
+	} else {
+        imageLayerStyle += `background-image: url(${backgroundUrl}); background-position: center;`
+    }
 }
 
 // ---------- 颜色层样式 ----------
@@ -65,13 +81,15 @@ if (bgColorCfg.enable) {
     }
 </style>
 
-<div class="bg-layer bg-color-layer" style={colorLayerStyle} aria-hidden="true">
-    {
-        colorLayerStyle && (
+{
+    hasColorLayer ? (
+        <div class="bg-layer bg-color-layer" style={colorLayerStyle} aria-hidden="true">
             <div class="bg-layer bg-image-layer" style={imageLayerStyle} aria-hidden="true"/>
-        )
-    }
-</div>
+        </div>
+    ) : (
+        <div class="bg-layer bg-image-layer" style={imageLayerStyle} aria-hidden="true"></div>
+    )
+}
 
 <!-- 内容层 -->
 <div class="content-layer">

@@ -67,6 +67,9 @@ const beautyConfigSchema = z.object({
             enable: z.boolean().default(true),
             url: z.string().default("assets/canvas/blog_bg/bg8.svg"),
             svgColor: z.string().default(""),
+            'repeat-x': z.boolean().default(true),
+            'repeat-y': z.boolean().default(false),
+            fill: z.boolean().default(false),
         }),
         color: z.object({
             enable: z.boolean().default(true),
