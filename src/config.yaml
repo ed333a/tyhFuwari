@@ -1,12 +1,12 @@
 # 站点配置
 siteConfig:
-  author: Your Name
+  author: TYH
   avatar: assets/images/avatar.jpg
   title: 硬件日记
   subtitle: 日常分享 · 硬件设计 · 经验踩坑
   description: 分享单片机、FPGA 开发，和 PCB 设计经验，记录嵌入式开发路上的成长点滴。
   locale: zh_CN # 站点语言
-  siteUrl: https://example.com  # 此站点地址在文章底部版权内容中用到
+  siteUrl: https://blog.tyh123.top  # 此站点地址在文章底部版权内容中用到
   
   # 文章底部的许可证信息
   page-width: 75rem
@@ -20,9 +20,10 @@ siteConfig:
     #   theme: 'light'
     #   sizes: '32x32'
   keywords:
-    - your key words
-    - more
-    - more annnnd more
+    - FPGA
+    - STM32
+    - 博客
+    - blog
   
   toc:
     enable: true
@@ -38,15 +39,9 @@ siteConfig:
 # 社交媒体链接，显示在页面左侧的个人信息中
 #######################################
 social-links:
-  - name: twitter
-    icon: fa6-brands:twitter
-    url: "https://twitter.com"
-  - name: steam
-    icon: fa6-brands:steam
-    url: "https://store.steampowered.com"
   - name: Github
     icon: fa6-brands:github
-    url: "https://github.com"
+    url: "https://github.com/ed333a"
 
 
 #######################################
