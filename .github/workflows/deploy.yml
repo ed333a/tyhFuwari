@@ -1,4 +1,4 @@
-name: Deploy Hexo Blog
+name: Deploy Blog
 
 on:
   push:
@@ -27,8 +27,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - name: Install dependencies
-        run: npm install
+      - name: Install pnpm
+        run: npm i -g pnpm
+
+      - name: Install dependencies by pnpm
+        run: pnpm install
 
       - name: Generate static files
         run: npm run build
