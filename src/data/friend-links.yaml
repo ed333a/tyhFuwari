@@ -1,0 +1,13 @@
+- name: 鸣谢
+  desc: 感谢以下项目/服务的贡献
+  link-list:
+    - name: Astro
+      link: https://astro.build/
+      avatar: /img/friend_link/thanks/astro.svg
+      descr: 专为内容驱动型网站打造的 Web 框架。
+      time: 于 2026-03-01 收录
+    - name: Fuwari
+      link: /favicon/favicon-dark-128.png
+      avatar: "/img/friend_link/thanks/butterfly-icon.png"
+      descr: 本站的模板来源
+      time: 于 2026-03-01 收录

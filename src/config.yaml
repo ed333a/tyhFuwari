@@ -69,6 +69,9 @@ nav:
     - link: '/about'
       text: 关于我
       icon: fa6-solid:user
+    - link: '/archive'
+      text: 归档
+      icon: fa6-solid:folder
     - link: '/friends'
       text: 友情链接
       icon: fa6-solid:envelope

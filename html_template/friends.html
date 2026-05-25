@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="友情链接 · 优质技术资源与设计灵感分组推荐。权威文档、开源社区、创意美学，共同成长。">
+    <title>友情链接 | 伙伴分组推荐 (Flex布局)</title>
+    <!-- Tailwind CSS v3 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 自定义微调：平滑过渡 + 按钮箭头动效 -->
+    <style>
+        /* 极简补充，增强动效，不影响Tailwind主结构 */
+        .card-hover-transition {
+            transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s;
+        }
+        .friend-card:hover {
+            transform: translateY(-4px);
+            border-color: #cbdffc;
+        }
+        .visit-link-arrow {
+            transition: transform 0.2s ease;
+        }
+        .group-card-link:hover .visit-link-arrow {
+            transform: translateX(3px);
+        }
+        /* 确保flex卡片内容撑满高度 */
+        .flex-card-inner {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        /* 卡片内内容撑开 */
+        .card-content-fill {
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-gray-100 to-blue-50 font-sans antialiased text-slate-800">
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+        <!-- 主容器 - 玻璃质感 -->
+        <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl shadow-slate-200/50 p-6 md:p-8 transition-all">
+            
+            <!-- 头部区域 -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-slate-800 via-blue-800 to-indigo-700 bg-clip-text text-transparent tracking-tight">
+                    🔗 友情链接
+                </h1>
+                <div class="inline-flex items-center gap-2 mt-2 px-4 py-1.5 bg-blue-50/70 rounded-full text-blue-700 text-sm font-medium backdrop-blur-sm">
+                    <span>✨</span> 伙伴 · 灵感 · 专业视野
+                </div>
+                <p class="text-slate-600 max-w-2xl mx-auto mt-4 text-base">精选优质平台，按主题分组推荐。技术文档、开源社区、设计美学，为你的创造力注入能量。</p>
+            </div>
+
+            <!-- 分组列表容器 (两组，每组卡片容器均使用 Flex 布局) -->
+            <div class="space-y-14">
+                
+                <!-- ========= 分组一：开发学习 · 权威技术库 ========= -->
+                <div class="group-section">
+                    <!-- 分组头部 + 介绍文字 -->
+                    <div class="border-l-4 border-blue-500 pl-5 mb-6">
+                        <div class="flex items-center gap-3 flex-wrap">
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 flex items-center gap-2">
+                                📚 开发学习 · 权威技术库
+                            </h2>
+                            <span class="text-xs font-semibold bg-blue-100 text-blue-700 rounded-full px-3 py-1">6个资源</span>
+                        </div>
+                        <p class="text-slate-600 text-sm md:text-base mt-2 max-w-3xl bg-white/50 rounded-xl px-4 py-2">
+                            汇集全球顶尖技术文档、编程教程与开发者社区。从标准规范到开源实战，无论初学还是资深开发者，都能在此获得坚实支持与灵感。
+                        </p>
+                    </div>
+
+                    <!-- 卡片容器：采用 Flex 布局 + flex-wrap + gap-6，完全移除 Grid -->
+                    <div class="flex flex-wrap gap-6">
+                        <!-- 1. MDN Web Docs -->
+                        <div class="friend-card w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl card-hover-transition transition-all flex">
+                            <div class="flex-card-inner w-full p-5">
+                                <div class="flex items-start gap-4 pb-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-white font-bold text-xl shadow-md flex-shrink-0">M</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-slate-800 hover:text-blue-600 transition"><a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener noreferrer">MDN Web Docs</a></h3>
+                                        <div class="inline-flex items-center gap-1 text-xs font-medium bg-slate-100 text-slate-700 rounded-full px-2.5 py-0.5 mt-1">📘 标准文档 · 权威</div>
+                                    </div>
+                                </div>
+                                <div class="card-content-fill text-slate-600 text-sm leading-relaxed my-3">
+                                    <p>网页开发权威指南，HTML、CSS、JavaScript、Web API 完整参考，前端开发者必备知识库。</p>
+                                </div>
+                                <div class="pt-3 mt-auto">
+                                    <a href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener noreferrer" class="group-card-link inline-flex items-center gap-1 text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">
+                                        访问网站 <span class="visit-link-arrow inline-block">→</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. GitHub -->
+                        <div class="friend-card w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl card-hover-transition transition-all flex">
+                            <div class="flex-card-inner w-full p-5">
+                                <div class="flex items-start gap-4 pb-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center text-white font-bold text-xl shadow-md">G</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-slate-800 hover:text-blue-600 transition"><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></h3>
+                                        <div class="inline-flex items-center gap-1 text-xs font-medium bg-slate-100 text-slate-700 rounded-full px-2.5 py-0.5 mt-1">🐙 开源协作 · 代码托管</div>
+                                    </div>
+                                </div>
+                                <div class="card-content-fill text-slate-600 text-sm leading-relaxed my-3">
+                                    <p>全球最大开发者社区，数百万开源项目，版本控制与协作开发的核心平台。</p>
+                                </div>
+                                <div class="pt-3 mt-auto">
+                                    <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="group-card-link inline-flex items-center gap-1 text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">
+                                        访问网站 <span class="visit-link-arrow inline-block">→</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Stack Overflow -->
+                        <div class="friend-card w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl card-hover-transition transition-all flex">
+                            <div class="flex-card-inner w-full p-5">
+                                <div class="flex items-start gap-4 pb-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-700 to-orange-600 flex items-center justify-center text-white font-bold text-xl shadow-md">S</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-slate-800 hover:text-blue-600 transition"><a href="https://stackoverflow.com/" target="_blank" rel="noopener noreferrer">Stack Overflow</a></h3>
+                                        <div class="inline-flex items-center gap-1 text-xs font-medium bg-slate-100 text-slate-700 rounded-full px-2.5 py-0.5 mt-1">💡 编程问答 · 社区</div>
+                                    </div>
+                                </div>
+                                <div class="card-content-fill text-slate-600 text-sm leading-relaxed my-3">
+                                    <p>程序员问答殿堂，千万级技术解决方案，和全球开发者一起排障成长。</p>
+                                </div>
+                                <div class="pt-3 mt-auto">
+                                    <a href="https://stackoverflow.com/" target="_blank" rel="noopener noreferrer" class="group-card-link inline-flex items-center gap-1 text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">
+                                        访问网站 <span class="visit-link-arrow inline-block">→</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. freeCodeCamp -->
+                        <div class="friend-card w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl card-hover-transition transition-all flex">
+                            <div class="flex-card-inner w-full p-5">
+                                <div class="flex items-start gap-4 pb-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center text-white font-bold text-xl shadow-md">F</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-slate-800 hover:text-blue-600 transition"><a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer">freeCodeCamp</a></h3>
+                                        <div class="inline-flex items-center gap-1 text-xs font-medium bg-slate-100 text-slate-700 rounded-full px-2.5 py-0.5 mt-1">🌱 公益编程 · 开源教育</div>
+                                    </div>
+                                </div>
+                                <div class="card-content-fill text-slate-600 text-sm leading-relaxed my-3">
+                                    <p>免费学习编程，获得认证，构建真实项目，帮助数百万人开启开发者生涯。</p>
+                                </div>
+                                <div class="pt-3 mt-auto">
+                                    <a href="https://www.freecodecamp.org/" target="_blank" rel="noopener noreferrer" class="group-card-link inline-flex items-center gap-1 text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">
+                                        访问网站 <span class="visit-link-arrow inline-block">→</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5. 阮一峰的网络日志 -->
+                        <div class="friend-card w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl card-hover-transition transition-all flex">
+                            <div class="flex-card-inner w-full p-5">
+                                <div class="flex items-start gap-4 pb-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-700 to-blue-700 flex items-center justify-center text-white font-bold text-xl shadow-md">阮</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-slate-800 hover:text-blue-600 transition"><a href="https://www.ruanyifeng.com/blog/" target="_blank" rel="noopener noreferrer">阮一峰的网络日志</a></h3>
+                                        <div class="inline-flex items-center gap-1 text-xs font-medium bg-slate-100 text-slate-700 rounded-full px-2.5 py-0.5 mt-1">📖 科技周刊 · 深度文章</div>
+                                    </div>
+                                </div>
+                                <div class="card-content-fill text-slate-600 text-sm leading-relaxed my-3">
+                                    <p>知名技术博客，互联网观察、前端教程与「科技爱好者周刊」，内容深刻实用。</p>
+                                </div>
+                                <div class="pt-3 mt-auto">
+                                    <a href="https://www.ruanyifeng.com/blog/" target="_blank" rel="noopener noreferrer" class="group-card-link inline-flex items-center gap-1 text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">
+                                        访问网站 <span class="visit-link-arrow inline-block">→</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6. CSS-Tricks -->
+                        <div class="friend-card w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-1rem)] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl card-hover-transition transition-all flex">
+                            <div class="flex-card-inner w-full p-5">
+                                <div class="flex items-start gap-4 pb-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-fuchsia-600 to-pink-600 flex items-center justify-center text-white font-bold text-xl shadow-md">C</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-slate-800 hover:text-blue-600 transition"><a href="https://css-tricks.com/" target="_blank" rel="noopener noreferrer">CSS-Tricks</a></h3>
+                                        <div class="inline-flex items-center gap-1 text-xs font-medium bg-slate-100 text-slate-700 rounded-full px-2.5 py-0.5 mt-1">🎨 前端布局 · 深度技巧</div>
+                                    </div>
+                                </div>
+                                <div class="card-content-fill text-slate-600 text-sm leading-relaxed my-3">
+                                    <p>CSS 技巧、Flex/Grid指南与前端实验，现代Web设计的宝藏杂志。</p>
+                                </div>
+                                <div class="pt-3 mt-auto">
+                                    <a href="https://css-tricks.com/" target="_blank" rel="noopener noreferrer" class="group-card-link inline-flex items-center gap-1 text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-200 rounded-full px-4 py-1.5 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all">
+                                        访问网站 <span class="visit-link-arrow inline-block">→</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========= 分组二：设计创意 · 灵感美学 ========= -->
+                <div class="group-section mt-8">
+                    <div class="border-l-4 border-purple-500 pl-5 mb-6">
+                        <div class="flex items-center gap-3 flex-wrap">
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 flex items-center gap-2">
+                                🎨 设计创意 · 灵感美学
+                            </h2>
+                            <span class="text-xs font-semibold bg-purple-100 text-purple-700 rounded-full px-3 py-1">2个精品</span>
+                        </div>
+                        <p class="text-slate-600 text-sm md:text-base mt-2 max-w-3xl bg-white/50 rounded-xl px-4 py-2">
+                            聚焦UI/UX前沿趋势，汇集全球顶尖设计师作品与权威设计媒体。为你的创意项目注入视觉能量与美学灵感。
+                        </p>
+                    </div>
+
+                    <!-- 第二组卡片 Flex 容器，同样使用 flex-wrap + gap -->
+                    <div class="flex flex-wrap gap-6">
+                        <!-- Dribbble -->
+                        <div class="friend-card w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(50%-0.75rem)] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl card-hover-transition transition-all flex">
+                            <div class="flex-card-inner w-full p-5">
+                                <div class="flex items-start gap-4 pb-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 flex items-center justify-center text-white font-bold text-xl shadow-md">D</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-slate-800 hover:text-purple-600 transition"><a href="https://dribbble.com/" target="_blank" rel="noopener noreferrer">Dribbble</a></h3>
+                                        <div class="inline-flex items-center gap-1 text-xs font-medium bg-slate-100 text-slate-700 rounded-full px-2.5 py-0.5 mt-1">🎯 设计社区 · UI灵感</div>
+                                    </div>
+                                </div>
+                                <div class="card-content-fill text-slate-600 text-sm leading-relaxed my-3">
+                                    <p>全球顶尖设计师作品集，UI/插画/动效/品牌创意，引领设计趋势风向标。</p>
+                                </div>
+                                <div class="pt-3 mt-auto">
+                                    <a href="https://dribbble.com/" target="_blank" rel="noopener noreferrer" class="group-card-link inline-flex items-center gap-1 text-sm font-semibold text-purple-600 bg-purple-50 border border-purple-200 rounded-full px-4 py-1.5 hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all">
+                                        发现灵感 <span class="visit-link-arrow inline-block">→</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Smashing Magazine -->
+                        <div class="friend-card w-full md:w-[calc(50%-0.75rem)] lg:w-[calc(50%-0.75rem)] bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl card-hover-transition transition-all flex">
+                            <div class="flex-card-inner w-full p-5">
+                                <div class="flex items-start gap-4 pb-2">
+                                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 flex items-center justify-center text-white font-bold text-xl shadow-md">S</div>
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-slate-800 hover:text-purple-600 transition"><a href="https://www.smashingmagazine.com/" target="_blank" rel="noopener noreferrer">Smashing Magazine</a></h3>
+                                        <div class="inline-flex items-center gap-1 text-xs font-medium bg-slate-100 text-slate-700 rounded-full px-2.5 py-0.5 mt-1">📰 设计前沿 · 开发深度</div>
+                                    </div>
+                                </div>
+                                <div class="card-content-fill text-slate-600 text-sm leading-relaxed my-3">
+                                    <p>专注设计系统、前端架构与用户体验，权威文章与电子书，专业人士灵感源泉。</p>
+                                </div>
+                                <div class="pt-3 mt-auto">
+                                    <a href="https://www.smashingmagazine.com/" target="_blank" rel="noopener noreferrer" class="group-card-link inline-flex items-center gap-1 text-sm font-semibold text-purple-600 bg-purple-50 border border-purple-200 rounded-full px-4 py-1.5 hover:bg-purple-600 hover:text-white hover:border-purple-600 transition-all">
+                                        深度阅读 <span class="visit-link-arrow inline-block">→</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 页脚区域：友情链接交换与版权声明 -->
+            <div class="mt-12 pt-6 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
+                <div class="flex items-center gap-1">
+                    <span>© 2025 友情链接廊</span>
+                    <span class="hidden md:inline mx-1">·</span>
+                    <span>开放共享 · 分组推荐优质伙伴</span>
+                </div>
+                <div class="bg-slate-100 px-4 py-1.5 rounded-full text-slate-700 text-xs md:text-sm">
+                    🤝 交换链接 & 建议: <a href="mailto:friends@linkhub.dev" class="font-medium text-blue-600 hover:underline">friends@linkhub.dev</a>
+                </div>
+                <div class="flex items-center gap-1">
+                    <span>🌐</span>
+                    <span>技术文档 · 开源社区 · 设计美学</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
