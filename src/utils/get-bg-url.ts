@@ -10,7 +10,7 @@ if (devConfig.debug) {
 }
 
 // 将配置中的 (相对) 路径映射到真实的图片 URL
-function getImageUrl(relativePath: string): string {
+export function getImageUrl(relativePath: string): string {
 	// 如果已经是绝对路径 (在 public 文件夹下, 以 / 开头), 直接返回
 	if (relativePath.startsWith("/")) return relativePath;
 

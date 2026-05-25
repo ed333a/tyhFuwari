@@ -1,13 +1,28 @@
+
+# CB550A 09947A 185AC0 D32691 743CEB
 - name: 鸣谢
-  desc: 感谢以下项目/服务的贡献
+  desc: |- 
+    感谢以下项目/服务, 为本站提供了建站基础。博客的成功搭建离不开以下免费项目的贡献。
+  tag: 项目/服务
   link-list:
     - name: Astro
       link: https://astro.build/
-      avatar: /img/friend_link/thanks/astro.svg
-      descr: 专为内容驱动型网站打造的 Web 框架。
+      avatar: /img/friend-link/thanks/astro.svg
+      descr: 专为内容驱动型网站打造的 Web 框架, 具有响应速度快的优点。
       time: 于 2026-03-01 收录
+      tag: 🚧 建站基础
+      icon-color: '#09947A'
     - name: Fuwari
-      link: /favicon/favicon-dark-128.png
-      avatar: "/img/friend_link/thanks/butterfly-icon.png"
-      descr: 本站的模板来源
+      link: https://github.com/saicaca/fuwari
+      avatar: "/favicon/favicon-light-128.png"
+      tag: ⚒️ 模板
+      descr: 一个动画流畅的 Astro 框架模板, 本站基于该模板进行修改。
       time: 于 2026-03-01 收录
+      icon-color: '#CB550A'
+    - name: JSDelivr
+      link: https://www.jsdelivr.com/
+      avatar: "/img/friend-link/thanks/jsdelivr.png"
+      tag: 提供 CDN 加速服务
+      descr: 感谢 JSDelivr 为本站的样式文件提供 cdn 加速服务。
+      time: 于 2026-03-01 收录
+      icon-color: '#185AC0'

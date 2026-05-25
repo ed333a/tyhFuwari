@@ -1,0 +1,23 @@
+import { parse } from "yaml";
+import { z } from "zod";
+import yamlRaw from "@/data/friend-links.yaml?raw";
+
+const rawConfig = parse(yamlRaw);
+
+const friendLinksCfgSchema = z.array(z.object({
+    name: z.string(),
+    desc: z.string(),
+    tag: z.string().default(""),
+    'link-list': z.array(z.object({
+        name: z.string(),
+        link: z.string(),
+        avatar: z.string(),
+        descr: z.string(),
+        tag: z.string().default(""),
+        time: z.string(),
+        'icon-color': z.string().default("linear-gradient(135deg, #ff6d6d, #6dffb6)"),
+    })),
+}));
+
+type FriendLinks = z.infer<typeof friendLinksCfgSchema>;
+export const friendLinks: FriendLinks = friendLinksCfgSchema.parse(rawConfig);
