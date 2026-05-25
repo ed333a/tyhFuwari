@@ -28,6 +28,12 @@ siteConfig:
     enable: true
     depth: 2
 
+  pagination:
+    posts-perpage: 6            # 每一页的文章数量
+    pagePrefix: "page"          # 分页地址的前缀，如 page1 表示第一页, page2 表示第二页, 以此类推, 注意不要有空格
+    pageSuffix: ""              # 后缀
+    page1-redirect-root: true   # 是否将第一页重定向到根页面
+
 #######################################
 # 社交媒体链接，显示在页面左侧的个人信息中
 #######################################
@@ -56,7 +62,7 @@ nav:
   title: 'Little Sweet'       # 导航栏标题
   title_icon: 'fa6-solid:bookmark'
   items:
-    - link: '/'               # 导航链接地址
+    - link: '/'         # 导航链接地址
       text: 主页              # 导航显示文本
       icon: fa6-solid:house   # (可选) 图标，关于图标请参考 https://icones.js.org/collection/fa6-solid
       openInExternal: false   # (可选) 是否在新标签页打开链接, 默认为 false
@@ -125,7 +131,7 @@ beauty:
       fill: false                              # 控制图片铺满整个页面, 这个值启用后上面两个选项将会失效
     # 背景色设置
     color:
-      enable: false    # 启用背景色
+      enable: true    # 启用背景色
       linear: true    # 是否启用渐变色背景, 如果为 false 则使用颜色列表中的第一个颜色, 为 true 则需要至少提供 2 种颜色, 至多 3 种。
       deg: 135        # 渐变旋色转角度, 输入整数值 0-360
       colors:         # 日间模式颜色列表, 最多可以有三个

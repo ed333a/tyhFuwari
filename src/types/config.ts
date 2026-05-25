@@ -42,6 +42,12 @@ const siteConfigSchema = z.object({
         enable: z.boolean().default(false),
         depth: z.int().default(2),
     }),
+    pagination: z.object({
+        'posts-perpage': z.int().default(6),
+        pagePrefix: z.string().default("page-"),
+        pageSuffix: z.string().default(""),
+        'page1-redirect-root': z.boolean().default(true),
+    }),
 });
 
 const beautyConfigSchema = z.object({

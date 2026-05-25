@@ -2,6 +2,7 @@
 import type { Page } from "astro";
 import { Icon } from "astro-icon/components";
 import { url } from "../../utils/url-utils";
+import { siteConfig } from "@/types/config";
 
 interface Props {
 	page: Page;
@@ -45,9 +46,10 @@ if (r < page.lastPage - 2) pages.push(HIDDEN);
 if (r === page.lastPage - 2) pages.push(page.lastPage - 1);
 if (r < page.lastPage) pages.push(page.lastPage);
 
+const pgCfg = siteConfig.pagination;
 const getPageUrl = (p: number) => {
 	if (p === 1) return "/";
-	return `/page-${p}/`;
+	return `/${pgCfg.pagePrefix}${p}${pgCfg.pageSuffix}/`;
 };
 ---
 

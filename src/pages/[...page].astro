@@ -1,25 +1,86 @@
 ---
-import type { GetStaticPaths } from "astro";
+import type { GetStaticPaths, Page } from "astro";
 import Pagination from "../components/control/Pagination.astro";
 import PostPage from "../components/PostPage.astro";
 import MainGridLayout from "../layouts/MainGridLayout.astro";
 import { getSortedPosts } from "../utils/content-utils";
+import { siteConfig } from "@/types/config";
 
-export const getStaticPaths = (async ({ paginate }) => {
-	const allBlogPosts = await getSortedPosts();
-	return paginate(allBlogPosts, { pageSize: 6 });
+export const getStaticPaths = (async () => {
+  const allPosts = await getSortedPosts();
+  const pageSize = 6;
+  const pgCfg = siteConfig.pagination;
+  const totalPages = Math.ceil(allPosts.length / pageSize);
+
+  const paths = [];
+  // /page-1 自动重定向到根
+  if (siteConfig.pagination["page1-redirect-root"]) {
+    paths.push({ params: { page: undefined } });  // 根路径 /
+    paths.push({ params: { page: `${pgCfg.pagePrefix}1${pgCfg.pageSuffix}` } });
+  } else {
+    paths.push({ params: { page: `${pgCfg.pagePrefix}1${pgCfg.pageSuffix}` } });
+  }
+
+  // 后续页 /page-2, /page-3, ...
+  for (let i = 2; i <= totalPages; i++) {
+    paths.push({ params: { page: `${pgCfg.pagePrefix}${i}${pgCfg.pageSuffix}` } });
+  }
+  return paths;
 }) satisfies GetStaticPaths;
-// https://github.com/withastro/astro/issues/6507#issuecomment-1489916992
 
-const { page } = Astro.props;
+// 处理 /page-1 重定向
+const pgCfg = siteConfig.pagination;
+const pageParam = Astro.params.page;
+if (pageParam === `${pgCfg.pagePrefix}1${pgCfg.pageSuffix}` && pgCfg["page1-redirect-root"]) {
+  return Astro.redirect("/");
+}
 
-// import fs from "fs";
-// fs.writeFileSync("./allblogposts.json", JSON.stringify(await getSortedPosts(), null, 2));
+// 获取当前页码
+let currentPage = 1;
+if (pageParam && typeof pageParam === "string") {
+  const match = pageParam.match(`/${pgCfg.pagePrefix}(\d+)${pgCfg.pageSuffix}/`);
+  if (match) currentPage = parseInt(match[1], 10);
+}
+
+// 获取文章数据并分页
+const allPosts = await getSortedPosts();
+const pageSize = 6;
+const totalPages = Math.ceil(allPosts.length / pageSize);
+
+const start = (currentPage - 1) * pageSize;
+const end = start + pageSize;
+const postsOnPage = allPosts.slice(start, end);
+
+// 生成分页 URL (和 Pagination.astro 中的 url 保持一致, 防止出错)
+const getPageUrl = (pageNum: number) => {
+  if (pageNum === 1) return "/";
+  return `/${pgCfg.pagePrefix}${pageNum}${pgCfg.pageSuffix}`;
+};
+
+const prevUrl = currentPage > 1 ? getPageUrl(currentPage - 1) : undefined;
+const nextUrl = currentPage < totalPages ? getPageUrl(currentPage + 1) : undefined;
+const currentUrl = getPageUrl(currentPage);
+
+// 构造 Page 对象
+const page: Page = {
+  data: postsOnPage,
+  currentPage,
+  lastPage: totalPages,
+  url: {
+    current: currentUrl,
+    prev: prevUrl,
+    next: nextUrl,
+  },
+  start: start + 1,
+  end: Math.min(end, allPosts.length),
+  total: allPosts.length,
+  size: pageSize,
+} as Page;
 
 const len = page.data.length;
 ---
 
 <MainGridLayout>
-    <PostPage page={page}></PostPage>
-    <Pagination class="mx-auto" page={page} style={`animation-delay: calc(var(--content-delay) + ${(len)*50}ms)`}></Pagination>
+  <PostPage page={page} />
+  <Pagination class="mx-auto" page={page} style={`animation-delay: calc(var(--content-delay) + ${len * 50}ms)`}/>
 </MainGridLayout>
