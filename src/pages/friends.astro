@@ -62,6 +62,15 @@ import { getImageUrl } from "@/utils/get-bg-url"
                     {/* 分组下的站点列表容器 */}
                     <div class="friendlink-cards-container">
                         {
+                            group["link-list"].length === 0 && 
+                            <div class="w-full flex justify-center">
+                                <div class="w-fit card-base p-[20px] font-[900]">
+                                    <h1 class="text-[20px] text-indigo-500"> 好邻居正在招募中…… </h1>
+                                </div>
+                            </div>
+                        }
+
+                        {
                             group["link-list"].map((link) => (
                                 <div class="friend-card">
                                     {/* 站点封面 */}

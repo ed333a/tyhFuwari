@@ -129,7 +129,7 @@ const artalkSite = commentCfg.artalk.site;
         </div>
 
         {
-            commentCfg && 
+            commentCfg.enable && commentCfg.use.toLowerCase() === "artalk" &&
             <div id="Comments" class="mt-[20px] p-5 card-base"></div>
         }
         
@@ -159,13 +159,17 @@ const artalkSite = commentCfg.artalk.site;
 
 </MainGridLayout>
 
-<script src={(artalkServer.endsWith('/') ? artalkServer : (artalkServer + '/')) + "dist/Artalk.js"}/>
-<script define:vars={{ artalkServer, artalkSite }}>
-    console.log(window.location.pathname);
-    Artalk.init({
-        el: "#Comments",
-        pageKey: window.location.pathname,
-        server: artalkServer,
-        site: artalkSite,
-    });
-</script>
+{
+    commentCfg.enable && commentCfg.use.toLowerCase() === "artalk" &&
+    <script src={(artalkServer.endsWith('/') ? artalkServer : (artalkServer + '/')) + "dist/Artalk.js"}/>
+    <script define:vars={{ artalkServer, artalkSite }}>
+        console.log(window.location.pathname);
+        Artalk.init({
+            el: "#Comments",
+            pageKey: window.location.pathname,
+            server: artalkServer,
+            site: artalkSite,
+        });
+    </script>
+}
+

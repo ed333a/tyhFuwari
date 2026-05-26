@@ -16,7 +16,7 @@ const friendLinksCfgSchema = z.array(z.object({
         tag: z.string().default(""),
         time: z.string(),
         'icon-color': z.string().default("linear-gradient(135deg, #ff6d6d, #6dffb6)"),
-    })),
+    })).default([]),
 }));
 
 type FriendLinks = z.infer<typeof friendLinksCfgSchema>;
