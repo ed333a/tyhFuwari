@@ -1,7 +1,7 @@
 # 站点配置
 siteConfig:
   author: TYH
-  avatar: assets/images/avatar.jpg
+  avatar: /img/avatar.jpg
   title: 硬件日记
   subtitle: 日常分享 · 硬件设计 · 经验踩坑
   description: 分享单片机、FPGA 开发，和 PCB 设计经验，记录嵌入式开发路上的成长点滴。
@@ -118,7 +118,7 @@ beauty:
   # body 背景设置, 若同时启用背景图和背景色, 则背景图的显示优先级要高于背景色
   background:
     # 为背景添加一个模糊效果
-    blur: 1 # 模糊半径, 推荐 1-2, 设置为 0 则表示不模糊
+    blur: 2 # 模糊半径, 推荐 1-2, 设置为 0 则表示不模糊
     # 背景图片设置
     image:
       enable: true    # 是否启用背景 

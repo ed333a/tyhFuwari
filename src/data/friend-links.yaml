@@ -7,22 +7,29 @@
   link-list:
     - name: Astro
       link: https://astro.build/
-      avatar: /img/friend-link/thanks/astro.svg
+      cover: /img/friend-link/thanks/astro.svg
       descr: 专为内容驱动型网站打造的 Web 框架, 具有响应速度快的优点。
       time: 于 2026-03-01 收录
       tag: 🚧 建站基础
       icon-color: '#09947A'
     - name: Fuwari
       link: https://github.com/saicaca/fuwari
-      avatar: "/favicon/favicon-light-128.png"
+      cover: "/favicon/favicon-light-128.png"
       tag: ⚒️ 模板
       descr: 一个动画流畅的 Astro 框架模板, 本站基于该模板进行修改。
       time: 于 2026-03-01 收录
       icon-color: '#CB550A'
     - name: JSDelivr
       link: https://www.jsdelivr.com/
-      avatar: "/img/friend-link/thanks/jsdelivr.png"
+      cover: "/img/friend-link/thanks/jsdelivr.png"
       tag: 提供 CDN 加速服务
       descr: 感谢 JSDelivr 为本站的样式文件提供 cdn 加速服务。
       time: 于 2026-03-01 收录
       icon-color: '#185AC0'
+    - name: Cloudflare
+      link: https://www.cloudflare.com/
+      cover: "/img/friend-link/thanks/cloudflare.png"
+      tag: 提供 pages 服务
+      descr: 感谢 Cloudflare 为本站提供免费的静态资源部署和 DNS 服务
+      time: 于 2026-03-01 收录
+      icon-color: '#F48220'

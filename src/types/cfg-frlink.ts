@@ -11,7 +11,7 @@ const friendLinksCfgSchema = z.array(z.object({
     'link-list': z.array(z.object({
         name: z.string(),
         link: z.string(),
-        avatar: z.string(),
+        cover: z.string(),
         descr: z.string(),
         tag: z.string().default(""),
         time: z.string(),
