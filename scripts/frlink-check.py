@@ -12,6 +12,7 @@ from typing import Dict, List, Tuple, Optional, Any
 
 import requests
 import yaml
+import os
 
 # 在控制台输出
 COLOR = {
@@ -178,6 +179,11 @@ def save_json_files(data: Dict[str, Any], base_path: str):
     """
     输出格式化和压缩版的结果 (json 格式)
     """
+    
+    dir_name = os.path.dirname(base_path)
+    if dir_name:
+        os.makedirs(dir_name, exist_ok=True)
+
     # 格式化结果
     try:
         with open(base_path, "w", encoding="utf-8") as f:
