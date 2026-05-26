@@ -4,7 +4,7 @@ on:
   schedule:
     # 每 12 小时运行一次
     - cron: '0 */12 * * *'
-  
+  workflow_dispatch: # 允许手动触发
 jobs:
   check-links:
     runs-on: ubuntu-latest
