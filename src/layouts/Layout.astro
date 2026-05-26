@@ -72,6 +72,7 @@ import "@/styles/markdown-extend.styl"
 import "@/styles/main.css"
 
 import "@/utils/post-utils"
+import { getImageUrl } from "@utils/get-bg-url";
 ---
 
 <!DOCTYPE html>
@@ -106,9 +107,8 @@ import "@/utils/post-utils"
 		<meta name="keywords" content={siteConfig.keywords.join(',')}/>
 		{favicons.map(favicon => (
 			<link rel="icon"
-				  href={favicon.src.startsWith('/') ? url(favicon.src) : favicon.src}
-				  sizes={favicon.sizes}
-				  media={favicon.theme && `(prefers-color-scheme: ${favicon.theme})`}
+				  type="image/x-icon"
+				  href={getImageUrl(favicon.src)}
 			/>
 		))}
 		<!-- Set the theme before the page is rendered to avoid a flash -->

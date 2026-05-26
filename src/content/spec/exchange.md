@@ -15,6 +15,7 @@ name: 站点名称
 link: 站点地址
 cover: 站点封面
 descr: 关于你站点一段较长的描述内容，推荐 30 字左右
+icon: 你站点的图标，将会显示在友链的左侧（可选）
 tag: 显示在站点标题下方的一个小 tag (可选)
 ```
 
@@ -24,8 +25,10 @@ tag: 显示在站点标题下方的一个小 tag (可选)
 ```yaml
 站点名称: 硬件日记
 站点地址: https://blog.tyh123.top/
+站点封面: https://blog.tyh123.top/img/site_cover.png
 头像地址: https://blog.tyh123.top/img/avatar.jpg
-网站介绍: 分享单片机、FPGA 开发，和 PCB 设计经验，记录嵌入式开发路上的成长点滴。
+站点介绍: 分享单片机、FPGA 开发，和 PCB 设计经验，记录嵌入式开发路上的成长点滴。
+站点介绍(短): 记录嵌入式学习过程。
 邮箱: ed333.email@qq.com
 ```
 

@@ -81,7 +81,23 @@ import { getImageUrl } from "@/utils/get-bg-url"
                                     <div class="p-5 bg-slate-100">
                                         <div class="flex gap-4 pb-2">
                                             {/* 站点图标，取首字母/文字 */}
-                                            <div class=`link-icon` style=`background-image: ${link["icon-color"]}; background-color: ${link["icon-color"]};`>{link.name.slice(0,1)}</div>
+                                            {
+                                                !link.icon && 
+                                                <div class="link-icon" style={
+                                                    "background-image: " + link["icon-color"] + "; background-color: " + link["icon-color"] + ";"
+                                                }>
+                                                    {link.name.slice(0,1)}
+                                                </div>
+                                            }
+
+                                            {
+                                                link.icon && 
+                                                <div class="link-icon-img" style={
+                                                    "background-image: url(" + link.icon + ");"
+                                                }></div>
+                                            }
+                                            
+                                                
                                             <div class="flex-1">
                                                 <h3 class="link-title">
                                                     <a href=`${link.link}` target="_blank" rel="noopener noreferrer">
@@ -200,6 +216,11 @@ import { getImageUrl } from "@/utils/get-bg-url"
         shadow-md flex-shrink-0;
     }
 
+    .link-icon-img {
+        @apply w-12 h-12 rounded-2xl flex items-center 
+        justify-center text-white font-bold text-xl 
+        shadow-md flex-shrink-0 bg-no-repeat bg-cover;
+    }
 
     /* 自定义核心布局 —— 纯CSS自适应宽度 (基于 :has() 选择器，无需JS) */
     /* 卡片容器使用 flex 布局，结合 :has() 动态改变子项宽度 */

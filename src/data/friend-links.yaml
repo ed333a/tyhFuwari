@@ -3,7 +3,12 @@
 - name: 好朋友们
   desc: |-
     网络浩渺，能够在此驻足已是缘分，若能通过这些链接跳转到另一个有趣的灵魂，更是幸事。
-  link-linst:
+  link-list:
+    - name: Liseezn'blog
+      link: https://blog.liseezn.top
+      cover: https://blog.liseezn.top/logo.webp
+      icon: https://blog.liseezn.top/logo.webp
+      descr: 分享学习，项目，及教程
 - name: 鸣谢
   desc: |- 
     感谢以下项目/服务, 为本站提供了建站基础。博客的成功搭建离不开以下免费项目的贡献。

@@ -15,10 +15,10 @@ siteConfig:
     name: CC-BY-NC-SA 4.0
     url: https://creativecommons.org/licenses/by-nc-sa/4.0/
   
-  favicons: []
-    # - src: '/favicon/icon.png'
-    #   theme: 'light'
-    #   sizes: '32x32'
+  favicons: 
+    - src: '/img/avatar.jpg'
+      theme: 'light'
+      sizes: '32x32'
   keywords:
     - FPGA
     - STM32

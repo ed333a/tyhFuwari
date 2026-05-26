@@ -13,8 +13,8 @@ const friendLinksCfgSchema = z.array(z.object({
         link: z.string(),
         cover: z.string(),
         descr: z.string(),
+        icon: z.string().default(""),
         tag: z.string().default(""),
-        time: z.string(),
         'icon-color': z.string().default("linear-gradient(135deg, #ff6d6d, #6dffb6)"),
     })).default([]),
 }));
