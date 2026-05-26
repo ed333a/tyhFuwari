@@ -23,7 +23,7 @@ jobs:
         run: pip install requests pyyaml
 
       - name: Run friend links checker
-        run: python scripts/check_friends.py -o scripts/result/result.json
+        run: python scripts/frlink-check.py -o scripts/result/result.json
 
       - name: Push results to pages
         uses: peaceiris/actions-gh-pages@v4
