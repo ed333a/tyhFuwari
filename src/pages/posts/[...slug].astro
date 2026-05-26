@@ -8,7 +8,7 @@ import MainGridLayout from "@layouts/MainGridLayout.astro";
 import { getSortedPosts } from "@utils/content-utils";
 import { getDir, getPostUrlBySlug } from "@utils/url-utils";
 import { Icon } from "astro-icon/components";
-import { siteConfig } from "@/types/config";
+import { siteConfig,commentCfg } from "@/types/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
@@ -58,10 +58,14 @@ const jsonLd = {
 		: siteConfig.locale.replace("_", "-"),
 	// TODO include cover image here
 };
+
+// artalk comment
+const artalkServer = commentCfg.artalk.server;
+const artalkSite = commentCfg.artalk.site;
 ---
 <MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} lang={entry.data.lang} setOGTypeArticle={true} headings={headings}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
-    <div class="flex w-full rounded-[var(--border-radius)] overflow-hidden relative mb-4">
+    <div class="flex flex-col w-full rounded-[var(--border-radius)] overflow-hidden relative mb-4">
         <div id="post-container" class:list={["card-base z-10 px-6 md:px-9 pt-6 pb-4 relative w-full ",
             {}
         ]}>
@@ -123,6 +127,12 @@ const jsonLd = {
             {siteConfig.license.enable && <License title={entry.data.title} slug={entry.slug} pubDate={entry.data.published} class="mb-6 rounded-xl license-container"></License>}
 
         </div>
+
+        {
+            commentCfg && 
+            <div id="Comments" class="mt-[20px] p-5 card-base"></div>
+        }
+        
     </div>
 
     <div class="flex flex-col md:flex-row justify-between mb-4 gap-4 overflow-hidden w-full">
@@ -148,3 +158,14 @@ const jsonLd = {
     </div>
 
 </MainGridLayout>
+
+<script src={(artalkServer.endsWith('/') ? artalkServer : (artalkServer + '/')) + "dist/Artalk.js"}/>
+<script define:vars={{ artalkServer, artalkSite }}>
+    console.log(window.location.pathname);
+    Artalk.init({
+        el: "#Comments",
+        pageKey: window.location.pathname,
+        server: artalkServer,
+        site: artalkSite,
+    });
+</script>

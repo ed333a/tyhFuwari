@@ -88,6 +88,15 @@ banner:
   banner-height-extend: 30vh
   banner-overlap: 3.5rem
 
+comment:
+  enable: true                    # 启用评论系统
+  use: Artalk                     # 目前只支持 Artalk
+
+  # artalk 评论系统配置
+  artalk:
+    server: http://localhost:4001 # Artalk 后端地址
+    site: '我的博客'               # 站点名称
+
 #######################################
 # 站点美化配置
 #######################################

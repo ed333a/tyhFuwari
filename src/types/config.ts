@@ -165,6 +165,15 @@ const socialLinksSchema = z
         },
     ]);
 
+const commentCfgSchema = z.object({
+    enable: z.boolean().default(false),
+    use: z.string(),
+    artalk: z.object({
+        server: z.string(),
+        site: z.string(),
+    }),
+});
+
 const configSchema = z.object({
     siteConfig: siteConfigSchema,
     dev: devConfigSchema,
@@ -172,6 +181,7 @@ const configSchema = z.object({
     nav: navConfigSchema,
     banner: bannerConfigSchema,
     "social-links": socialLinksSchema,
+    comment: commentCfgSchema,
 });
 
 type Config = z.infer<typeof configSchema>;
@@ -181,6 +191,7 @@ type BeautyConfig = z.infer<typeof beautyConfigSchema>;
 type NavConfig = z.infer<typeof navConfigSchema>;
 type BannerConfig = z.infer<typeof bannerConfigSchema>;
 type SocialLinks = z.infer<typeof socialLinksSchema>;
+type CommentConfig = z.infer<typeof commentCfgSchema>;
 
 export const config: Config = configSchema.parse(rawConfig);
 export const devConfig: DevConfig = config.dev;
@@ -189,3 +200,4 @@ export const beautyConfig: BeautyConfig = config.beauty;
 export const navConfig: NavConfig = config.nav;
 export const bannerConfig: BannerConfig = config.banner;
 export const socialLinksConfig: SocialLinks = config["social-links"];
+export const commentCfg: CommentConfig = config.comment;
