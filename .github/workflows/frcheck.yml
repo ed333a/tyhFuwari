@@ -29,9 +29,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.ACCESS_TOKEN }}
-          publish_dir: ./scripts/result
+          external_repository: ed333a/ed333a.github.io 
           publish_branch: main
-          keep_files: false   # 覆盖旧文件，只保留最新结果
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'Publick links check results'
+          publish_dir: ./scripts/result
+          keep_files: true
