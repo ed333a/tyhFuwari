@@ -28,7 +28,7 @@ jobs:
       - name: Push results to pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.ACCESS_TOKEN }}
+          personal_token: ${{ secrets.ACCESS_TOKEN }}
           external_repository: ed333a/ed333a.github.io 
           publish_branch: main
           publish_dir: ./scripts/result
