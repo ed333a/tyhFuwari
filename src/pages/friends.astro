@@ -9,13 +9,26 @@ import { getImageUrl } from "@/utils/get-bg-url"
 <div class="card-base mt-[20px] relative-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 transition-all duration-300">
     <!-- 头部内容区域 -->
     <div class="text-center mb-12">
-        <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-slate-800 via-indigo-800 to-purple-800 bg-clip-text text-transparent tracking-tight drop-shadow-sm">
+        <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r 
+        from-slate-800 via-indigo-800 to-purple-800
+        dark: from-cyan-100 via-indigo-400 to-rose-4 00
+        bg-clip-text text-transparent tracking-tight 
+        drop-shadow-sm
+    ">
             🔗 友情链接
         </h1>
-        <div class="inline-flex items-center gap-2 mt-5 px-5 py-1.5 bg-white/40 backdrop-blur-md rounded-full text-indigo-800 text-sm font-medium border border-white/50 shadow-sm">
-            <span>✨</span> 一群非常好的小伙伴们
+        <div class="inline-flex items-center gap-2 mt-5 px-5 py-1.5 
+            bg-white/40 dark:bg-indigo-800 backdrop-blur-md rounded-full 
+            text-indigo-800 dark:text-neutral-100
+            text-sm font-medium border border-white/50 shadow-sm"
+        >
+            <span>✨</span> 一群非常优秀的小伙伴们
         </div>
-        <p class="text-slate-700 max-w-2xl mx-auto mt-4 text-base font-medium drop-shadow-sm">很高兴与优秀的你们相遇于此，愿我们彼此照亮，在各自的路上走得更远。</p>
+        <p class="text-slate-700 dark:text-slate-100 max-w-2xl mx-auto 
+            mt-4 text-base font-medium drop-shadow-sm"
+        >
+            很高兴与优秀的你们相遇于此，愿我们彼此照亮，在各自的道路上走得更远。
+        </p>
     </div>
 
     <!-- 分组 -->
@@ -25,21 +38,23 @@ import { getImageUrl } from "@/utils/get-bg-url"
                 <div class="group-section">
                     
                     {/* 分组顶部的介绍 */}
-                    <div class="border-l-4 border-blue-500/80 pl-5 mb-6">
+                    <div class="border-l-4 border-[var(--primary)] pl-5 mb-6">
                         <div class="flex items-center gap-3 flex-wrap">
-                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 flex items-center gap-2 drop-shadow-sm">
+                            <h2 class="text-2xl md:text-3xl font-bold text-slate-800 
+                                dark:text-slate-100 flex items-center gap-2 drop-shadow-sm"
+                            >
                                 {group.name}
                             </h2>
 
                             {
                                 group.tag && 
-                                <span class="text-xs font-semibold bg-blue-200/70 backdrop-blur-sm text-blue-900 rounded-full px-3 py-1 border border-white/40">
+                                <span class="group-tag">
                                     {group["link-list"].length}个{group.tag}
                                 </span>
                             }
                         </div>
 
-                        <p class="text-slate-700 text-sm md:text-base mt-2 max-w-3xl bg-white/30 backdrop-blur-sm rounded-xl px-4 py-2 border border-white/20">
+                        <p class="group-desc">
                             {group.desc}
                         </p>
                     </div>
@@ -49,16 +64,17 @@ import { getImageUrl } from "@/utils/get-bg-url"
                         {
                             group["link-list"].map((link) => (
                                 <div class="friend-card">
+                                    {/* 站点封面 */}
                                     <div class="frlink-cover" style=`background-size:cover; background-image: url(${getImageUrl(link.avatar)});`>
                                         <div class="absolute inset-0 bg-black/20"></div>
                                         <div class="frlink-name">{link.name}</div>
                                     </div>
-                                    <div class="p-5">
-                                        <div class="flex items-start gap-4 pb-2">
+                                    <div class="p-5 bg-slate-100">
+                                        <div class="flex gap-4 pb-2">
                                             {/* 站点图标，取首字母/文字 */}
                                             <div class=`link-icon` style=`background-image: ${link["icon-color"]}; background-color: ${link["icon-color"]};`>{link.name.slice(0,1)}</div>
                                             <div class="flex-1">
-                                                <h3 class="text-xl font-bold text-slate-800 hover:text-blue-700 transition">
+                                                <h3 class="link-title">
                                                     <a href=`${link.link}` target="_blank" rel="noopener noreferrer">
                                                         {link.name}
                                                     </a>
@@ -91,13 +107,28 @@ import { getImageUrl } from "@/utils/get-bg-url"
     </div>
 
     <!-- 页脚 -->
-    <div class="mt-12 pt-6 border-t border-white/40 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-700">
-        <div class="bg-white/40 backdrop-blur-md px-4 py-1.5 rounded-full text-slate-800 text-xs md:text-sm border border-white/40 shadow-sm">
-            🤝 交换链接 & 建议: <a href="mailto:friends@linkhub.dev" class="font-medium text-blue-700 hover:underline">ed333.email@qq.com</a>
+    <div class="frlink-footer">
+        <div class="bg-white/40 dark:bg-white/10 px-4 py-1.5 
+            rounded-full text-slate-800 dark:text-slate-100 text-xs md:text-sm 
+            border border-white/40 shadow-sm"
+        >
+            🤝 交换链接 & 建议: 
+            <a href="/exchange" class="font-medium text-blue-700 
+                dark:text-cyan-200 hover:underline"
+            >
+                点击这里
+            </a>
         </div>
-        <div class="flex items-center gap-1 bg-white/30 backdrop-blur-sm px-3 py-1 rounded-full">
+        <div class="flex items-center gap-1 bg-white/30 dark:bg-white/10 
+            px-4 py-1.5 rounded-full text-slate-800 dark:text-slate-100
+            text-xs md:text-sm border border-white shadow-sm"
+        >
             <span>🌐</span>
-            <span>欢迎您成为本站的一员</span>
+            <a href="/exchange" class="font-medium text-blue-700 
+                dark:text-cyan-200 hover:underline"
+            >
+                欢迎您成为本站的一员
+            </a>
         </div>
     </div>
 </div>
@@ -105,10 +136,35 @@ import { getImageUrl } from "@/utils/get-bg-url"
 </LayoutWithoutSideBar>
 
 <style>
+    .frlink-footer {
+        @apply mt-12 pt-6 border-t border-black/40 dark:border-white/40 
+        flex flex-col md:flex-row justify-between items-center gap-4 
+        text-sm text-slate-700;
+    }
+
+    .group-desc {
+        @apply text-slate-700 dark:text-slate-100 
+        text-sm md:text-base mt-2 max-w-3xl 
+        bg-white/30 dark:bg-white/10 backdrop-blur-sm 
+        rounded-xl px-4 py-2 border border-white/20;
+    }
+    
+    .group-tag {
+        @apply text-xs font-semibold bg-purple-200 backdrop-blur-sm 
+        text-indigo-500 rounded-full px-3 py-1 border border-white/40
+        shadow-[5px_5px_20px_rgba(0,0,0,0.15)]
+        dark:shadow-[5px_5px_20px_rgba(255,255,255,0.15)];
+    }
+
     .link-tag {
         @apply border rounded-full px-2 py-1 border-blue-200/60
         w-fit bg-white text-[13px];
         box-shadow: 5px 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .link-title {
+        @apply text-xl font-bold text-slate-800 
+        hover:text-indigo-500 transition;
     }
 
     .goto-link {
