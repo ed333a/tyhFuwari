@@ -203,7 +203,7 @@ def save_json_files(data: Dict[str, Any], base_path: str):
 
 def main():
     parser = argparse.ArgumentParser(description="检测友链状态并输出 json 格式的检测结果")
-    parser.add_argument("-f", "--file", default="../src/data/friend-links.yaml", help="友链数据路径")
+    parser.add_argument("-f", "--file", default="friend-links.yaml", help="友链数据路径")
     parser.add_argument("-t", "--timeout", type=float, default=5.0, help="请求超时时间（秒）")
     parser.add_argument("-o", "--output-json", default="result.json", help="完整 JSON 输出路径(默认: result.json)，压缩版自动在同目录生成 -min 文件")
     args = parser.parse_args()
