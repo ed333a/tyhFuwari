@@ -2,12 +2,25 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
+import { generateIdForPost } from "@/utils/post-utils"
+import { fi } from "zod/v4/locales";
 
 // // Retrieve posts and sort them by publication date
 async function getRawSortedPosts() {
 	const allBlogPosts = await getCollection("posts", ({ data }) => {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
+
+	// 为没有 postID 的文章生成 ID
+	// NOTE: 不知道为啥只能在 dev 服务器预览的时候能正常工作
+	//       写好的文章没有 id 的情况下直接 build 虽然可以正常生成 id，但还是会报找不到 ID 的错误
+	for (let i = 0; i < allBlogPosts.length; i++) {
+		if (!allBlogPosts[i].data.postID) {
+			const final = generateIdForPost(allBlogPosts[i].filePath);
+			console.log(`final: ${final}`)
+			allBlogPosts[i].data.postID = final;
+		}
+	}
 
 	const sorted = allBlogPosts.sort((a, b) => {
 		const dateA = new Date(a.data.published);

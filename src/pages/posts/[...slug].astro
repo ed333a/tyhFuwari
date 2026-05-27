@@ -12,19 +12,13 @@ import { siteConfig,commentCfg } from "@/types/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
-import { generateIdForPost } from "@/utils/post-utils"
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
 
     return blogEntries.flatMap((entry) => {
         if (!entry.data.postID) {
-            generateIdForPost(entry.filePath || "");
-            return [];
-        }
-
-        if (!entry.data.postID) {
-            throw new Error("Id not found.")
+            throw new Error("PostId is not found.")
         }
 
         return [
