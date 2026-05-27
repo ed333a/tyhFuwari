@@ -163,12 +163,15 @@ const artalkSite = commentCfg.artalk.site;
     commentCfg.enable && commentCfg.use.toLowerCase() === "artalk" &&
     <script src={(artalkServer.endsWith('/') ? artalkServer : (artalkServer + '/')) + "dist/Artalk.js"}/>
     <script define:vars={{ artalkServer, artalkSite }}>
-        console.log(window.location.pathname);
         Artalk.init({
             el: "#Comments",
             pageKey: window.location.pathname,
             server: artalkServer,
             site: artalkSite,
+            avatarURLBuilder: (comment) => {
+                // console.log(JSON.stringify(comment, null,2));
+                return `https://weavatar.com/avatar/${comment.email_encrypted}?d=initials&name=${comment.nick}`;
+            },
         });
     </script>
 }
