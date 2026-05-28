@@ -39,12 +39,12 @@ if (devConfig.debug) {
     console.log("post id(s): " + (postIDs.size > 0 ? '[' + Array.from(postIDs).join(', ') + ']' : "[]"))
 }
 
-export function generateIdForPost(post: string): string {
-    console.log(`post: ${post}`);
+export function generateIdForPost(post: string | undefined): string {
+    if (!post) return "";
     const content = fs.readFileSync(post, "utf-8");
     if(content.includes("postID:")) return "";  // 如果文章中已有 postID 直接返回空字符串
 
-    const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+    const match = content.match(/^--- *\r?\n([\s\S]*?)\r?\n---/);
     if (!match) {
         console.log(`[Post-utils] ⚠ 跳过无 frontmatter 文件: ${post}`);
         return ""; // 无 formatter 直接返回空字符串
