@@ -94,7 +94,7 @@ comment:
 
   # artalk 评论系统配置
   artalk:
-    server: http://localhost:4002 # Artalk 后端地址
+    server: http://artalk.tyh123.top # Artalk 后端地址
     site: '我的博客'               # 站点名称
 
 #######################################
