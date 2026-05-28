@@ -13,9 +13,7 @@ if (!aboutPost) {
 const { Content } = await render(aboutPost);
 
 import { commentCfg } from "@/types/config";
-// artalk comment
-const artalkServer = commentCfg.artalk.server;
-const artalkSite = commentCfg.artalk.site;
+import ArtalkComment from "@components/ArtalkComment.astro";
 ---
 <MainGridLayout title="交换友链" description="交换友链">
     <div class="flex flex-col w-full rounded-[var(--border-radius)] overflow-hidden relative min-h-32">
@@ -27,24 +25,10 @@ const artalkSite = commentCfg.artalk.site;
 
         {
             commentCfg.enable && commentCfg.use.toLowerCase() === "artalk" &&
-            <div id="Comments" class="mt-[20px] p-5 card-base"></div>
+            <div id="comment-wrapper" class="mt-[20px] p-5 card-base">
+                <ArtalkComment></ArtalkComment>
+            </div>
         }
     </div>
 </MainGridLayout>
 
-{
-    commentCfg.enable && commentCfg.use.toLowerCase() === "artalk" &&
-    <script src={(artalkServer.endsWith('/') ? artalkServer : (artalkServer + '/')) + "dist/Artalk.js"}/>
-    <script define:vars={{ artalkServer, artalkSite }}>
-        Artalk.init({
-            el: "#Comments",
-            pageKey: window.location.pathname,
-            server: artalkServer,
-            site: artalkSite,
-            avatarURLBuilder: (comment) => {
-                // console.log(JSON.stringify(comment, null,2));
-                return `https://weavatar.com/avatar/${comment.email_encrypted}?d=initials&name=${comment.nick}`;
-            },
-        });
-    </script>
-}

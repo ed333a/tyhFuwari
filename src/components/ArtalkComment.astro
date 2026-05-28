@@ -1,0 +1,74 @@
+---
+// https://www.16c.top/2025/AstroAddArtalk/
+import '@/styles/artalk-min.css'
+---
+
+<div id="comments"> </div>
+<script>
+    import Artalk from 'artalk';
+    import { commentCfg } from '@/types/config';
+
+    let artalk: Artalk | null;
+    let observer: MutationObserver;
+
+    function init() {
+        const ele = document.getElementById("comments");
+        if (!ele) return;
+
+        if (artalk) {
+            artalk.destroy();
+            artalk = null;
+        }
+
+        artalk = Artalk.init({
+            el: ele,
+            pageKey: location.pathname,
+            server: commentCfg.artalk.server,
+            site: commentCfg.artalk.site,
+            darkMode: false,
+            avatarURLBuilder: (comment) => {
+                // console.log(JSON.stringify(comment, null,2));
+                return `https://weavatar.com/avatar/${comment.email_encrypted}?d=initials&name=${comment.nick}`;
+            },
+        });
+
+        bindThemeObserver();
+
+        const isDark = document.documentElement.classList.contains('dark');
+        artalk.setDarkMode(isDark);
+    }
+
+    function bindThemeObserver() {
+        if (observer) observer.disconnect();
+
+        observer = new MutationObserver(() => {
+            if (!artalk) return;
+            const isDark = document.documentElement.classList.contains('dark');
+            console.log(`isDark: ${isDark}`)
+            artalk.setDarkMode(isDark);
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['class'],
+        });
+    }
+
+    // -----------------------
+    // 页面加载 & 导航事件
+    // -----------------------
+    const initEvents = ['DOMContentLoaded', 'astro:after-swap', 'pjax:complete', 'swup:contentReplaced']
+    for (const e of initEvents) {
+        document.addEventListener(e, () => {
+            // console.log(`触发事件: ${e}`, document.location.pathname)
+            if(document.location.pathname != '/' && document.location.pathname != '/index.html'){
+                init()
+            }
+        })
+    }
+
+    window.addEventListener("beforeunload", () => {
+        if (artalk) artalk.destroy();
+        if (observer) observer.disconnect();
+    });
+</script>

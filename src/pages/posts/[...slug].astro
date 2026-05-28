@@ -12,6 +12,7 @@ import { siteConfig,commentCfg } from "@/types/config";
 import ImageWrapper from "../../components/misc/ImageWrapper.astro";
 import PostMetadata from "../../components/PostMeta.astro";
 import { formatDateToYYYYMMDD } from "../../utils/date-utils";
+import ArtalkComment from "@components/ArtalkComment.astro";
 
 export async function getStaticPaths() {
 	const blogEntries = await getSortedPosts();
@@ -52,10 +53,6 @@ const jsonLd = {
 		: siteConfig.locale.replace("_", "-"),
 	// TODO include cover image here
 };
-
-// artalk comment
-const artalkServer = commentCfg.artalk.server;
-const artalkSite = commentCfg.artalk.site;
 ---
 <MainGridLayout banner={entry.data.image} title={entry.data.title} description={entry.data.description} lang={entry.data.lang} setOGTypeArticle={true} headings={headings}>
     <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
@@ -124,7 +121,9 @@ const artalkSite = commentCfg.artalk.site;
 
         {
             commentCfg.enable && commentCfg.use.toLowerCase() === "artalk" &&
-            <div id="Comments" class="mt-[20px] p-5 card-base"></div>
+            <div id="comment-wrapper" class="mt-[20px] p-5 card-base">
+                <ArtalkComment></ArtalkComment>
+            </div>
         }
         
     </div>
@@ -152,21 +151,3 @@ const artalkSite = commentCfg.artalk.site;
     </div>
 
 </MainGridLayout>
-
-{
-    commentCfg.enable && commentCfg.use.toLowerCase() === "artalk" &&
-    <script src={(artalkServer.endsWith('/') ? artalkServer : (artalkServer + '/')) + "dist/Artalk.js"}/>
-    <script define:vars={{ artalkServer, artalkSite }}>
-        Artalk.init({
-            el: "#Comments",
-            pageKey: window.location.pathname,
-            server: artalkServer,
-            site: artalkSite,
-            avatarURLBuilder: (comment) => {
-                // console.log(JSON.stringify(comment, null,2));
-                return `https://weavatar.com/avatar/${comment.email_encrypted}?d=initials&name=${comment.nick}`;
-            },
-        });
-    </script>
-}
-
