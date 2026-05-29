@@ -8,6 +8,12 @@ import '@/styles/artalk.css'
     import Artalk from 'artalk';
     import { commentCfg } from '@/types/config';
 
+    let serverUrl = import.meta.env.DEV ? commentCfg.artalk['server-dev'] : commentCfg.artalk.server;
+    if (import.meta.env.DEV) {
+        // 浏览器控制台输出
+        console.log(`评论区: 在 DEV 模式下预览页面, 地址: ${serverUrl};`);
+    }
+
     let artalk: Artalk | null;
     let observer: MutationObserver;
 
@@ -23,7 +29,7 @@ import '@/styles/artalk.css'
         artalk = Artalk.init({
             el: ele,
             pageKey: location.pathname,
-            server: commentCfg.artalk.server,
+            server: serverUrl,
             site: commentCfg.artalk.site,
             darkMode: false,
             avatarURLBuilder: (comment) => {
