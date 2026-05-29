@@ -2,6 +2,7 @@
 import LayoutWithoutSideBar from "@layouts/LayoutWithoutSideBar.astro"
 import { friendLinks } from "@/types/cfg-frlink"
 import { getImageUrl } from "@/utils/get-bg-url"
+import { Icon } from "astro-icon/components"
 ---
 
 <LayoutWithoutSideBar>
@@ -49,7 +50,7 @@ import { getImageUrl } from "@/utils/get-bg-url"
                             {
                                 group.tag && 
                                 <span class="group-tag">
-                                    {group["link-list"].length}个{group.tag}
+                                    {group["link-list"].length}{group.tag}
                                 </span>
                             }
                         </div>
@@ -104,18 +105,17 @@ import { getImageUrl } from "@/utils/get-bg-url"
                                                         {link.name}
                                                     </a>
                                                 </h3>
-                                                
-                                                {
-                                                    /* 站点标题下方的小 tag */
-                                                    link.tag && <div class="link-tag">{link.tag}</div>
-                                                }
+                                                <span class="site-url"> {link.link} </span>
                                                 
                                             </div>
                                         </div>
                                         <div class="text-slate-700 text-sm leading-relaxed my-3">
                                             <p>{link.descr}</p>
                                         </div>
-                                        <div class="pt-3 mt-auto flex justify-end">
+                                        <div class="pt-3 mt-auto flex justify-between">
+                                            <div class="flex items-center text-neutral-500 text-[12px]">
+                                                <Icon class="mr-[5px]" name="fa6-solid:calendar"></Icon>收录于 {link.date}
+                                            </div>
                                             <a href=`${link.link}` target="_blank" rel="noopener noreferrer" class="goto-link">访问网站 
                                                 <span class="visit-link-arrow inline-block">→</span>
                                             </a>
@@ -161,6 +161,21 @@ import { getImageUrl } from "@/utils/get-bg-url"
 </LayoutWithoutSideBar>
 
 <style>
+    .site-url {
+        font-size: 12px;
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        color: #475569;
+        background: rgba(0, 0, 0, 0.04);
+        display: inline-block;
+        padding: 0.15rem 0.35rem;
+        border-radius: 0.5rem;
+        word-break: break-all;
+        margin-bottom: 0.4rem;
+        max-width: 100%;
+        line-height: 1.3;
+        width: fit-content;
+    }
+
     .frlink-footer {
         @apply mt-12 pt-6 border-t border-black/40 dark:border-white/40 
         flex flex-col md:flex-row justify-between items-center gap-4 
