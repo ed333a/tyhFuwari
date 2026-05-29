@@ -16,32 +16,60 @@ import '@/styles/artalk.css'
 
     let artalk: Artalk | null;
     let observer: MutationObserver;
+    let retryCnt = 0;
 
-    function init() {
+    async function init() {
+        // 等待DOM更新完成
+        await new Promise(resolve => requestAnimationFrame(resolve));
+        await new Promise(resolve => setTimeout(resolve, 0));
+
         const ele = document.getElementById("comments");
-        if (!ele) return;
+        if (!ele) {
+            if (retryCnt < 10) {
+                console.warn('comments element not found, retrying...');
+                // 如果元素不存在，稍后重新初始化
+                setTimeout(() => init(), 50);
+                retryCnt++;
+                return;
+            } else {
+                // 尝试初始化评论区的次数达到最大，直接返回。
+                console.error('comments element load failed.');
+                return;
+            }
+        }
+
+        if (artalk && artalk.getEl() === ele) {
+            console.log('Artalk already initialized');
+            return;
+        }
 
         if (artalk) {
             artalk.destroy();
             artalk = null;
         }
 
-        artalk = Artalk.init({
+        try {
+            artalk = Artalk.init({
             el: ele,
             pageKey: location.pathname,
             server: serverUrl,
             site: commentCfg.artalk.site,
             darkMode: false,
             avatarURLBuilder: (comment) => {
-                // console.log(JSON.stringify(comment, null,2));
-                return `https://weavatar.com/avatar/${comment.email_encrypted}?d=initials&name=${comment.nick}`;
-            },
-        });
+                    // console.log(JSON.stringify(comment, null,2));
+                    return `https://weavatar.com/avatar/${comment.email_encrypted}?d=initials&name=${comment.nick}`;
+                },
+            });
 
-        bindThemeObserver();
+            bindThemeObserver();
 
-        const isDark = document.documentElement.classList.contains('dark');
-        artalk.setDarkMode(isDark);
+            const isDark = document.documentElement.classList.contains('dark');
+            artalk.setDarkMode(isDark);
+
+            console.log('Artalk initialized successfully.');
+        } catch (error) {
+            console.error('Failed to initialize Artalk: ', error);
+        }
     }
 
     function bindThemeObserver() {
@@ -63,15 +91,42 @@ import '@/styles/artalk.css'
     // -----------------------
     // 页面加载 & 导航事件
     // -----------------------
+    let isInitializing = false;
+    function safeInit() {
+        if (isInitializing) return;
+        isInitializing = true;
+
+        // 不初始化首页
+        if (location.pathname === '/' || location.pathname === 'index.html') {
+            isInitializing = false;
+            return;
+        }
+
+        init().finally(() => {
+            setTimeout(() => {
+                isInitializing = false;
+            }, 300);
+        });
+    }
+
     const initEvents = ['DOMContentLoaded', 'astro:after-swap', 'pjax:complete', 'swup:contentReplaced']
     for (const e of initEvents) {
         document.addEventListener(e, () => {
-            // console.log(`触发事件: ${e}`, document.location.pathname)
-            if(document.location.pathname != '/' && document.location.pathname != '/index.html'){
-                init()
-            }
+            Promise.resolve().then(safeInit);
         })
     }
+
+    // 初始加载
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => safeInit());
+    } else {
+        safeInit();
+    }
+
+    // 监听 Astro 页面切换完成
+    document.addEventListener('astro:page-load', () => {
+        safeInit();
+    });
 
     window.addEventListener("beforeunload", () => {
         if (artalk) artalk.destroy();
