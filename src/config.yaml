@@ -70,6 +70,10 @@ nav:
     - link: '/friends'
       text: 友情链接
       icon: fa6-solid:envelope
+    - link: 'https://statistics.tyh123.top/share/FImjZEcRBfGrjPTH'
+      text: 统计
+      icon: fa6-solid:magnifying-glass
+      openInExternal: true
 
 #######################################
 # 顶部 banner 图片
