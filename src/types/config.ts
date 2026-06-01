@@ -170,6 +170,7 @@ const commentCfgSchema = z.object({
     use: z.string(),
     artalk: z.object({
         server: z.string(),
+        'server-dev': z.string(),
         site: z.string(),
     }),
 });
