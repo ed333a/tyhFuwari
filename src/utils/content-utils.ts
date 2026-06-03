@@ -3,7 +3,6 @@ import I18nKey from "@i18n/i18nKey";
 import { i18n } from "@i18n/translation";
 import { getCategoryUrl } from "@utils/url-utils.ts";
 import { generateIdForPost } from "@/utils/post-utils"
-import { fi } from "zod/v4/locales";
 
 // // Retrieve posts and sort them by publication date
 async function getRawSortedPosts() {
@@ -14,6 +13,7 @@ async function getRawSortedPosts() {
 	// 为没有 postID 的文章生成 ID
 	// NOTE: 不知道为啥只能在 dev 服务器预览的时候能正常工作
 	//       写好的文章没有 id 的情况下直接 build 虽然可以正常生成 id，但还是会报找不到 ID 的错误
+	//(26-06-03 补): 再次运行后由于已经生成了文章 id，所以可以通过 build
 	for (let i = 0; i < allBlogPosts.length; i++) {
 		if (!allBlogPosts[i].data.postID) {
 			const final = generateIdForPost(allBlogPosts[i].filePath);

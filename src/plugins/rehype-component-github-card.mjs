@@ -11,14 +11,14 @@ import { h } from "hastscript";
  */
 export function GithubCardComponent(properties, children) {
 	if (Array.isArray(children) && children.length !== 0)
-		return h("div", { class: "hidden" }, [
+		return h("div", { }, [
 			'Invalid directive. ("github" directive must be leaf type "::github{repo="owner/repo"}")',
 		]);
 
 	if (!properties.repo || !properties.repo.includes("/"))
 		return h(
 			"div",
-			{ class: "hidden" },
+			{ },
 			'Invalid repository. ("repo" attributte must be in the format "owner/repo")',
 		);
 
