@@ -110,7 +110,7 @@ import { Icon } from "astro-icon/components"
                                             </div>
                                         </div>
                                         <div class="text-slate-700 text-sm leading-relaxed my-3">
-                                            <p>{link.descr}</p>
+                                            <p class="card-description h-[40px]" title={link.descr}>{link.descr}</p>
                                         </div>
                                         <div class="pt-3 mt-auto flex justify-between">
                                             <div class="flex items-center text-neutral-500 text-[12px]">
@@ -161,6 +161,15 @@ import { Icon } from "astro-icon/components"
 </LayoutWithoutSideBar>
 
 <style>
+    .card-description {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;  /* 最多显示 2 行 */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        word-break: break-word;
+    }
+
     .site-url {
         font-size: 12px;
         font-family: ui-monospace, 'SF Mono', Menlo, monospace;
@@ -235,6 +244,8 @@ import { Icon } from "astro-icon/components"
         @apply w-12 h-12 rounded-2xl flex items-center 
         justify-center text-white font-bold text-xl 
         shadow-md flex-shrink-0 bg-no-repeat bg-cover;
+        background-size: cover;
+        background-position: center;
     }
 
     /* 自定义核心布局 —— 纯CSS自适应宽度 (基于 :has() 选择器，无需JS) */
