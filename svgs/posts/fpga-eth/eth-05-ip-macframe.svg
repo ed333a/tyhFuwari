@@ -1,0 +1,57 @@
+<svg width="2720" height="510.00000000000006" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <marker orient="auto" markerHeight="8" markerWidth="8" refY="5" refX="5" viewBox="0 0 10 10" id="arrow">
+   <polygon id="svg_1" fill="black" points="0 0,10 5,0 10"/>
+  </marker>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_47">
+   <line id="svg_3" fill="none" stroke-dasharray="12 8" stroke-width="3" stroke="#000" y2="169.65868" x2="1091.25459" y1="10.25639" x1="1091.25459" class="dash"/>
+   <line stroke="#000" id="svg_5" fill="none" stroke-dasharray="12 8" stroke-width="3" y2="175.25639" x2="1494.82623" y1="10.25639" x1="1494.82623" class="dash"/>
+   <line id="svg_6" fill="none" stroke-dasharray="12 8" stroke-width="3" stroke="#000" y2="175.25639" x2="2519.25435" y1="10.25639" x1="2519.25435" class="dash"/>
+   <rect id="svg_7" stroke-width="3" stroke="black" fill="#d3d3d3" height="130" width="300" y="255.97061" x="151.25459"/>
+   <rect id="svg_8" stroke-width="3" stroke="black" fill="#d3d3d3" height="130" width="140" y="255.97061" x="451.25459"/>
+   <rect id="svg_9" stroke-width="3" stroke="black" fill="#f8cccc" height="130" width="500" y="255.97061" x="591.25459"/>
+   <rect id="svg_10" stroke-width="3" fill="#e9efd6" height="130" width="1430" y="256.4468" x="1091.41332" stroke="black"/>
+   <rect id="svg_11" stroke-width="3" stroke="black" fill="#d9e9bc" height="130" width="180" y="255.97061" x="2521.2541"/>
+   <rect id="svg_13" stroke-width="3" fill="#b8e1e8" height="130" width="1024.28572" y="126.25639" x="1496.87381" stroke="black"/>
+   <text id="svg_14" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="366.22701" x="74.84437">MAC层</text>
+   <text id="svg_15" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="340.39198" x="301.25459">前导码</text>
+   <text id="svg_16" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="339.3917" x="521.09758">SFD</text>
+   <text id="svg_17" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="339.3917" x="840.95531">以太网帧头</text>
+   <text id="svg_18" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="340.01825" x="1805.691">数据段</text>
+   <text id="svg_19" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="340.30393" x="2611.25418">FCS</text>
+   <text id="svg_20" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="209.15803" x="74.89743">IP层</text>
+   <text id="svg_22" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="210.37288" x="2007.68346">数据段</text>
+   <text stroke="null" id="svg_24" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="487.06149" x="301.25459">7 Bytes</text>
+   <text id="svg_26" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="487.06148" x="522.59485">1 Byte</text>
+   <text id="svg_28" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="487.06149" x="842.45195">14 Bytes</text>
+   <text id="svg_30" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="487.06144" x="1810.86992">46~1500 Bytes</text>
+   <text id="svg_34" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="69.3729" x="1286.25459">20 Bytes</text>
+   <g id="svg_35">
+    <rect stroke="black" id="svg_12" stroke-width="3" fill="#e9efd6" height="130" width="404.83865" y="126.20932" x="1091.32992"/>
+    <text id="svg_21" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="209.75774" x="1293.74912">IP首部</text>
+   </g>
+   <g id="svg_4" stroke="null">
+    <line id="svg_33" fill="none" stroke-width="3" marker-end="url(#arrow)" y2="100.81193" x2="1486.35003" y1="100.81193" x1="1098.25458" class="solid" stroke="#000"/>
+    <line transform="rotate(180 1292.3 100.811)" id="svg_36" fill="none" stroke-width="3" marker-end="url(#arrow)" y2="100.81193" x2="1486.35003" y1="100.81193" x1="1098.25458" class="solid" stroke="#000"/>
+   </g>
+   <line id="svg_29" fill="none" stroke-width="3" stroke="#000" marker-end="url(#arrow)" y2="419.50897" x2="2513.47981" y1="419.50897" x1="1108.26002" class="solid"/>
+   <line transform="rotate(180 1810.87 419.509)" id="svg_37" fill="none" stroke-width="3" stroke="#000" marker-end="url(#arrow)" y2="419.50897" x2="2517.05128" y1="419.50897" x1="1104.68863" class="solid"/>
+   <line transform="rotate(180 842.448 420.049)" id="svg_27" fill="none" stroke-width="3" stroke="#000" marker-end="url(#arrow)" y2="420.04921" x2="1080.89743" y1="420.04921" x1="604.00657" class="solid"/>
+   <line id="svg_38" fill="none" stroke-width="3" stroke="#000" marker-end="url(#arrow)" y2="420.0492" x2="1080.8974" y1="420.0492" x1="604.00657" class="solid"/>
+   <line transform="rotate(180 521.538 420.031)" id="svg_39" fill="none" stroke-width="3" stroke="#000" marker-end="url(#arrow)" y2="420.03139" x2="579.89743" y1="420.03139" x1="463.17722" class="solid"/>
+   <line id="svg_40" fill="none" stroke-width="3" stroke="#000" marker-end="url(#arrow)" y2="420.03139" x2="579.89743" y1="420.03139" x1="463.17722" class="solid"/>
+   <line stroke="#000" id="svg_23" fill="none" stroke-width="3" marker-end="url(#arrow)" y2="419.97059" x2="439.89743" y1="419.97059" x1="164.0193" class="solid"/>
+   <line transform="rotate(180 301.958 419.97)" stroke="#000" id="svg_2" fill="none" stroke-width="3" marker-end="url(#arrow)" y2="419.97059" x2="439.89743" y1="419.97059" x1="164.0193" class="solid"/>
+   <line id="svg_31" fill="none" stroke-width="3" stroke="#000" marker-end="url(#arrow)" y2="419.34131" x2="2691.89743" y1="419.34131" x1="2535.83623" class="solid"/>
+   <text id="svg_32" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="487.06144" x="2614.91794">4 Bytes</text>
+   <line transform="rotate(180 2613.86 419.341)" id="svg_25" fill="none" stroke-width="3" stroke="#000" marker-end="url(#arrow)" y2="419.34131" x2="2691.89743" y1="419.34131" x1="2535.83623" class="solid"/>
+   <line id="svg_41" fill="none" stroke-dasharray="12 8" stroke-width="3" stroke="#000" y2="169.65868" x2="1495.23155" y1="10.25639" x1="1495.23155" class="dash"/>
+   <text id="svg_43" text-anchor="middle" font-family="SimHei,sans-serif" font-size="52px" class="text" y="69.25639" x="2006.68552">20 Bytes</text>
+   <line id="svg_44" fill="none" stroke-width="3" marker-end="url(#arrow)" y2="100.81193" x2="2506.89743" y1="100.81193" x1="1506.47367" class="solid" stroke="#000"/>
+   <line transform="rotate(180 2006.69 100.812)" id="svg_45" fill="none" stroke-width="3" marker-end="url(#arrow)" y2="100.81193" x2="2506.89743" y1="100.81193" x1="1506.47367" class="solid" stroke="#000"/>
+  </g>
+ </g>
+</svg>
