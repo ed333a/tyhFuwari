@@ -14,8 +14,9 @@ postID: db8d0357 # 自动生成, 不要修改这个项目的值
 ### 前言
 **在 FPGA 中，数据通常只在时钟的上升沿被采集。对于采用双边沿数据有效的 RGMII 接口而言，若仅使用上升沿进行采样，就会丢失下降沿所对应的数据**。同理，FPGA 在输出数据时，也只能在上升沿发生变化。为解决这一问题，Xilinx 提供了 `IDDR` 和 `ODDR` 两个原语，分别用于接收和发送双边沿数据。
 
-> 下方所有配图均来自 [7Series FPGAs SelectIO Resources User Guide (UG471)](https://docs.amd.com/v/u/en-US/ug471_7Series_SelectIO)
-> 你可以打开 DOCNav 来搜索对应的文档名称
+:::note
+下方所有配图均来自 [[7Series FPGAs SelectIO Resources User Guide (UG471)]](https://docs.amd.com/v/u/en-US/ug471_7Series_SelectIO), 你可以打开 DOCNav 来搜索对应的文档名称
+:::
 
 ### IDDR (Input Double Data Rate)
 `IDDR` 的作用是将 RGMII 接口中的**双边沿数据** (DDR) 转换为 FPGA 内部可以处理的**单边沿数据**，`IDDR` 将双边沿变化的数据通过寄存器输出到了 Q1/Q2 两个端口上，分别代表上升沿的数据和下降沿的数据。
@@ -56,7 +57,7 @@ IDDR #(
 - ![IDDR_CLK_EDGE_SAME_EDGE_PIPELINED](/img/posts/fpga_impl_interface/ethernet_impl/eth-02/IDDR_CLK_EDGE_SAME_EDGE_PIPELINED.png)
 通过时序图我们可以看到 `IDDR` 原语在 `SAME_EDGE_PIPELINED` 对齐模式下满足了我们的数据对齐要求，所以在这里我们使用 `SAME_EDGE_PIPELINED` 对齐方式。
 ### ODDR (Output Double Data Rate)
-`ODDR` 的作用正好与 `IDDR` 是相反的，它通过在时钟的上升沿更新 `Q1/Q2` 的值，之后输出双边沿变化的 DDR 信号。
+`ODDR` 的作用正好与 `IDDR` 是相反的，它通过在**时钟的上升沿更新 `Q1/Q2` 的值**，之后输出双边沿变化的 DDR 信号。
 
 下面是 ODDR 的语言模板
 ```verilog
@@ -103,7 +104,10 @@ ODDR #(
 |     正常帧传输     |      1      |     0      |           1            |           1            | **正常数据传输**。表示当前时钟周期的 8 位数据全部有效  |
 |   **数据错误**    |      1      |     1      |           1            |           0            | **发送错误**。指示当前传输帧中存在错误，通常由MAC层发起 |
 |     保留/异常     |      0      |     1      |           0            |           1            |         无效的组合，实际过程中用不到          |
-> 在标准操作中，大多数应用只需要关注`正常帧传输`（上升沿=1，下降沿=1）和`数据错误`（上升沿=1，下降沿=0）这两种情况。
+
+:::note
+在标准操作中，大多数应用只需要关注`正常帧传输`（上升沿=1，下降沿=1）和`数据错误`（上升沿=1，下降沿=0）这两种情况。
+:::
 
 关于 `TX_CTL` 信号的产生方式，代码如下：
 ```verilog

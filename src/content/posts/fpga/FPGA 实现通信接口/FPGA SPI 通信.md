@@ -168,7 +168,7 @@ endgenerate
 - 当 `sclk_internal` 是**低电平**且 `spi_sclk_inv` 产生了脉冲信号的时候，表示 `sclk_internal` 将会**在下个时钟周期跳变到高电平**，此时则为 `sclk_internal` 的上升沿。
 - `update_edge` 和 `sample_edge` 则表示 SPI 数据的更新边沿和采样边沿，依照 CPHA 参数的设置在上升沿或下降沿更新/采样数据。
 
-```verilog
+```verilog startLineNumber=58
 wire    spi_sclk_negedge    =   spi_sclk_internal & spi_sclk_inv                ; // pulse signal, indicates SCLK negedge
 wire    spi_sclk_posedge    =  !spi_sclk_internal & spi_sclk_inv                ;
 wire    update_edge         = (CPHA == 0) ? spi_sclk_negedge : spi_sclk_posedge ; // Select update and sample edges based on CPHA
@@ -176,7 +176,9 @@ wire    sample_edge         = (CPHA == 0) ? spi_sclk_posedge : spi_sclk_negedge 
 ```
 
 ### 完整的 SPI 代码
-```verilog
+代码较长，已对 `50-238` 行的代码内容进行折叠操作
+
+```verilog collapse={50-237}
 module spi_master #(
     parameter                       DATA_WIDTH          = 5'd24             , // data width, [1bit RW ctrl, 15 bits register addr, 8 bits data]
     parameter                       CPOL                = 1'b0              , // Clock polarity
@@ -422,7 +424,7 @@ SDIO 通信完全不需要从头开始编写代码，以上方提供的 `spi_mas
 完整代码如下：
 ```verilog
 module sdio_interface (
-	input   wire            clk             ,   //  模块的时钟信号
+    input   wire            clk             ,   //  模块的时钟信号
     input   wire            rst_n           ,   //  模块的复位信号，低电平有效
     
     input   wire            rh_wl           ,   //  读写控制信号, 读为高电平，写为低电平

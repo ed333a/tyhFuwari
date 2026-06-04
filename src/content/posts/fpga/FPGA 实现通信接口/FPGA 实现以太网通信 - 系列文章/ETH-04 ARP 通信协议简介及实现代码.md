@@ -56,7 +56,8 @@ ARP 数据报位于以太网帧中的数据段中，它的格式如下图所示�
 - 发送到最后一个字节的 ARP 数据时，产生 `s_axis_tend` 信号。
 
 完整的实现代码如下：
-```verilog
+已折叠部分代码
+```verilog  collapse={35-179}
 module arp_tx (
     input   wire            clk             ,   //  [I] [     ] module clock
     input   wire            rst_n           ,   //  [I] [     ] module reset, active-low
@@ -246,7 +247,7 @@ endmodule
 - 从上游以太网帧解包模块中等待 `s_axis_rdv` 信号，表明负载数据有效。
 - 开始按字节计数，将接收到的数据寄存
 - 判断目的 IP 地址是否为板卡 IP 地址，如果是板卡的 IP 地址，则将寄存的源 MAC 地址输出到模块的端口，方便其它模块调用，否则将接收到的数据丢弃。
-```verilog
+```verilog collapse={35-122}
 module arp_rx (
     input   wire            clk             ,   //  [I] [     ] Module clock
     input   wire            rst_n           ,   //  [I] [     ] Module reset signal, active-low
@@ -373,7 +374,7 @@ endmodule
 ```
 #### ARP 模块
 这个模块是将两个模块进行整合封装到一个顶层，方便后续的例化
-```verilog
+```verilog collapse={35-49, 53-67}
 module arp (
     input                   rst_n       ,   //  [I] [     ] Module reset signal, active-low
     input                   gmii_tx_clk ,   //  [I] [     ] GMII TX clock

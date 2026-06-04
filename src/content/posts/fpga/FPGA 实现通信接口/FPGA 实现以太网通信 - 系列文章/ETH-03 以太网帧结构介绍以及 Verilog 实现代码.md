@@ -86,7 +86,7 @@ postID: 6ec21651 # 自动生成, 不要修改这个项目的值
 - 需要注意的是，上层协议模块给端口 `s_axis_tend` 产生脉冲后，封包模块并不会立即结束发送，而是继续发送 FCS 和等待帧间隙。
 - `module_busy` 信号在发送数据时 (从前导码开始，到 IFG 结束) 始终为高电平状态。
 
-```verilog
+```verilog collapse={35-312}
 // NOTE_HEADER--------------------------------------------------------------------------------------
 // Useage of this module:
 //  - Port s_axis_tdv set to 1'b1
@@ -410,9 +410,11 @@ endmodule
 - 接收完毕后比对接收到的目的 MAC 是否与板卡上的 MAC 一致，若一致则进入接收负载数据阶段。否则直接丢弃这个数据包。
 - 接收负载阶段，`s_axis_rdv` 信号将会被拉高，直到负载阶段结束。负载阶段结束时 `s_axis_rend` 会产生一个时钟周期的高电平脉冲信号。
 
-> **注意**：为了能够完整的接收 FCS(帧校验序列)，模块中的做法制是制作一个 4 字节的缓冲区，将来自 `gmii_rxd` 的数据延迟 4 个字节发送到 `s_axis_rd` 端口上，这样直到 FCS 阶段结束，缓冲区内的 4 字节数据刚好就是接收到的 FCS 数据。 
+:::note
+为了能够完整的接收 FCS(帧校验序列)，模块中的做法制是制作一个 4 字节的缓冲区，将来自 `gmii_rxd` 的数据延迟 4 个字节发送到 `s_axis_rd` 端口上，这样直到 FCS 阶段结束，缓冲区内的 4 字节数据刚好就是接收到的 FCS 数据。 
+:::
 
-```verilog
+```verilog collapse={34-282}
 // NOTE_HEADER--------------------------------------------------------------------------------------
 // HOW TO USE:
 //  1. Set s_axis_rrdy to 1'b1, for enable receive data from RGMII interface.
@@ -699,7 +701,7 @@ endmodule
 ```
 #### 以太网帧模块
 这个模块的作用是将两个模块进行整合封装到一个顶层，方便后续的例化
-```verilog
+```verilog collapse={42-60,66-82}
 module eth_frame # (
     parameter   USE_DEBUG   =   1'b0
 ) (

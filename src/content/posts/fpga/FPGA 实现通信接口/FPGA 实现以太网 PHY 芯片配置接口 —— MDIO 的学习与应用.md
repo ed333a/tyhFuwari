@@ -117,7 +117,8 @@ wire eth_mdc_negedge =  eth_mdc & eth_mdc_inv;   // indicates MDC negedge
 wire eth_mdc_posedge = !eth_mdc & eth_mdc_inv;   // indicates MDC posedge
 ```
 #### 完整的 MDIO 驱动代码
-```verilog
+已折叠部分代码 (点击即可展开)
+```verilog collapse={35-213}
 module mdio_dri # (
     parameter   CLK_DIV = 8'd10                 // for MDC generation, The max frequency of MDC is 12.500MHz
 )(
