@@ -5,7 +5,13 @@
     网络浩渺，能够在此驻足已是缘分，若能通过这些链接跳转到另一个有趣的灵魂，更是幸事。
   tag: ' 位好朋友'
   link-list:
-    - name: mccjs
+    - name: 雪萌の小窝
+      link: https://xuemeng.work
+      cover: https://xuemeng.work/wp-content/uploads/2026/02/icon.jpg
+      icon: https://xuemeng.work/wp-content/uploads/2026/02/icon.jpg
+      descr: 一个喜欢嵌入式的杂鱼大学生的博客～
+      date: 2026-06-04
+    - name: mccsjs
       link: https://seln.cn/
       cover: https://seln.cn/img/a.jpg
       icon: https://seln.cn/img/ico.jpg
