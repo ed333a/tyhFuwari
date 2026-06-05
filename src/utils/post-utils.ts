@@ -59,7 +59,8 @@ export function generateIdForPost(post: string | undefined): string {
     } while (postIDs.has(final));
 
     postIDs.add(final);
-    const newFrontmatter = `---\n${match[1].trimEnd()}\npostID: ${final} # 自动生成, 不要修改这个项目的值\n---`
+    // [2026-06-05 09:41] fix: 给 postID 值加上引号确保不会被解析为数字格式
+    const newFrontmatter = `---\n${match[1].trimEnd()}\npostID: '${final}' # 自动生成, 不要修改这个项目的值\n---`
     const newContent = content.replace(match[0], newFrontmatter);
     fs.writeFileSync(post, newContent);
 
