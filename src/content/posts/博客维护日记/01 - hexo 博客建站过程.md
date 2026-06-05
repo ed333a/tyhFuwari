@@ -1,13 +1,22 @@
 ---
-title: "[blog-MT-01] - 博客建站过程"
+title: "[blog-MT-01] - 使用 Astro/Hexo 框架的博客建站过程"
 published: 2026-05-19 22:33:31
 tags:
   - hexo
   - 经验分享
   - web
 category: 博客维护日记
+draft: true
 postID: f1ef2aaa # 自动生成, 不要修改这个项目的值
 ---
+
+### 关于 Astro
+Astro 是一个为内容驱动型网站而生的现代 Web 框架。
+
+:::warning
+注意: 文章中关于使用 hexo 框架建站的内容已不再适用于本站，本站采用 [Astro](https://astro.build/) 框架搭建。具体方式已在上文详细介绍。
+:::
+
 ### 关于 Hexo
 **Hexo** 是一个基于 Node.js 编写的快速、简洁且高效的**博客框架**。它通过解析 Markdown 格式的源文件，结合主题模板，一键生成静态网页资源；用户可以将这些静态资源文件部署到如 Github Pages 的静态资源托管服务站点上，无需后端环境或数据库，即可拥有高性能、易于维护的个人博客站点。
 
