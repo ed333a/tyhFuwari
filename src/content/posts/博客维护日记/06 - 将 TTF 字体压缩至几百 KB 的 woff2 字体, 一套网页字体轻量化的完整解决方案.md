@@ -261,6 +261,13 @@ ${fontFaces}
 图为生成好的子集字体文件, 可以看到文件大小来到了 203KB 和 235KB, 由于脚本中对文件进行了取哈希值操作, 所以文件名为 16 位哈希结果。
 ![generated-subset-font](/img/posts/blog/06/generated-subset-font.png)
 
+#### Step7. 应用 CSS 样式
+在 `<head>...</head>` 标签中, 引用端点 css, 使网站能够使用定义的 `font-family`。
+
+```html
+<link rel="stylesheet" href="/fonts.css" />
+```
+
 #### 补充说明
 :::note
 关于优化后的体积倍数计算: 
