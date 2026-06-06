@@ -30,6 +30,10 @@ import { Icon } from "astro-icon/components"
         >
             很高兴与优秀的你们相遇于此，愿我们彼此照亮，在各自的道路上走得更远。
         </p>
+        <a class="no-underline hover:underline text-indigo-500 font-[900]" href="/exchange">
+            点击这里
+        </a>
+        <span class="text-slate-800 dark:text-slate-100">交换友链</span>。
     </div>
 
     <!-- 分组 -->
@@ -101,7 +105,7 @@ import { Icon } from "astro-icon/components"
                                                 
                                             <div class="flex-1">
                                                 <h3 class="link-title">
-                                                    <a href=`${link.link}` target="_blank" rel="noopener noreferrer">
+                                                    <a href=`https://${link.link}` target="_blank" rel="noopener noreferrer">
                                                         {link.name}
                                                     </a>
                                                 </h3>
@@ -116,7 +120,7 @@ import { Icon } from "astro-icon/components"
                                             <div class="flex items-center text-neutral-500 text-[12px]">
                                                 <Icon class="mr-[5px]" name="fa6-solid:calendar"></Icon>收录于 {link.date}
                                             </div>
-                                            <a href=`${link.link}` target="_blank" rel="noopener noreferrer" class="goto-link">访问网站 
+                                            <a href=`https://${link.link}` target="_blank" rel="noopener noreferrer" class="goto-link">访问网站 
                                                 <span class="visit-link-arrow inline-block">→</span>
                                             </a>
                                         </div>

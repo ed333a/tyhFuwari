@@ -6,25 +6,25 @@
   tag: ' 位好朋友'
   link-list:
     - name: 雪萌の小窝
-      link: https://xuemeng.work
+      link: xuemeng.work
       cover: https://xuemeng.work/wp-content/uploads/2026/02/icon.jpg
       icon: https://xuemeng.work/wp-content/uploads/2026/02/icon.jpg
       descr: 一个喜欢嵌入式的杂鱼大学生的博客～
       date: 2026-06-04
     - name: mccsjs
-      link: https://seln.cn/
+      link: seln.cn
       cover: https://seln.cn/img/a.jpg
       icon: https://seln.cn/img/ico.jpg
       descr: 点一盏灯，等一个迷路的夜🍁🍁🍁
       date: 2026-06-04
     - name: Liseezn's blog
-      link: https://blog.liseezn.top
+      link: blog.liseezn.top
       cover: https://blog.liseezn.top/logo.webp
       icon: https://blog.liseezn.top/logo.webp
       descr: 分享学习，项目，及教程
       date: 2026-05-26
     - name: 辰渊尘
-      link: https://blog.mcxiaochen.top/
+      link: blog.mcxiaochen.top
       cover: https://blog.mcxiaochen.top/img/congyu/touxiang.webp
       icon: https://blog.mcxiaochen.top/img/congyu/touxiang.webp
       descr: 05后，高中生，内容偏技术向，同时也会更新生活日常，希望能对你有用QwQ
@@ -35,28 +35,28 @@
   tag: ' 个项目/服务'
   link-list:
     - name: Astro
-      link: https://astro.build/
+      link: astro.build
       cover: /img/friend-link/thanks/astro.svg
       descr: 专为内容驱动型网站打造的 Web 框架, 具有响应速度快的优点。
       time: 于 2026-03-01 收录
       icon-color: '#09947A'
       date: 2026-04-13
     - name: Fuwari
-      link: https://github.com/saicaca/fuwari
+      link: github.com/saicaca/fuwari
       cover: "/favicon/favicon-light-128.png"
       descr: 一个动画流畅的 Astro 框架模板, 本站基于该模板进行修改。
       time: 于 2026-03-01 收录
       icon-color: '#CB550A'
       date: 2026-04-13
     - name: JSDelivr
-      link: https://www.jsdelivr.com/
+      link: www.jsdelivr.com
       cover: "/img/friend-link/thanks/jsdelivr.png"
       descr: 感谢 JSDelivr 为本站的样式文件提供 cdn 加速服务。
       time: 于 2026-03-01 收录
       icon-color: '#185AC0'
       date: 2026-04-13
     - name: Cloudflare
-      link: https://www.cloudflare.com/
+      link: www.cloudflare.com
       cover: "/img/friend-link/thanks/cloudflare.png"
       descr: 感谢 Cloudflare 为本站提供免费的静态资源部署和 DNS 服务
       time: 于 2026-03-01 收录
