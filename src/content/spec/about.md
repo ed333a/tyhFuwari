@@ -22,7 +22,7 @@
 </div>
 
 # 关于我的一些信息
-- 🎯建站时间: 2026 年 4 月 13 日
+- 🎯 建站时间: 2026 年 4 月 13 日
 - 🎂 生日: 2004 年 5 月 4 日 (农历三月十六)
 - 🏠 当前居住于**湖北 · 武汉**，正在实习和工作中。负责嵌入式项目的程序开发 (**核动力驴** be like)。
 - 🌱 学习经验: 2023 年 5 月 - 至今
@@ -45,6 +45,14 @@
 - [**Cloudflare**](https://cloudflare.com/): 为本站提供免费的 SSL 证书、域名解析、CDN 加速以及静态资源托管服务。
 - [**jsdelivr**](https://www.jsdelivr.com): 为本站提供免费的 CDN 加速服务。
 - [**Artalk**](https://artalk.js.org/): 本站的评论系统。
+
+# 关于字体
+站点字体来源于以下开源项目
+(**目前的主要字体**)
+::github{repo="lxgw/LxgwWenKaiTC"}
+::github{repo="JetBrains/JetBrainsMono"}
+(**尝试过的**)
+::github{repo="lxgw/yozai-font"} 
 
 # 模板来源
 **现有的模板基于以下框架修改而来**

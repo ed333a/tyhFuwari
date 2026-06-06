@@ -37,7 +37,7 @@ ${fontFaces}
 
 /* 应用全局字体 */
 * {
-    font-family: 'JetBrainsMono-Regular', 'LXGWWenKaiMonoGB-Light';
+    font-family: 'JetBrainsMono-Regular', 'LXGWWenKaiMonoGB-Regular';
 }
 `;
 
