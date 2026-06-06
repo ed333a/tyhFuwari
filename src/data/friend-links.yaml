@@ -5,6 +5,12 @@
     网络浩渺，能够在此驻足已是缘分，若能通过这些链接跳转到另一个有趣的灵魂，更是幸事。
   tag: ' 位好朋友'
   link-list:
+    - name: 安知鱼
+      link: blog.anheyu.com
+      cover: https://npm.elemecdn.com/anzhiyu-theme-static@1.1.6/img/blog.anheyu.com.jpg
+      icon: https://npm.elemecdn.com/anzhiyu-blog-static@1.0.4/img/avatar.jpg
+      descr: 生活明朗，万物可爱
+      date: 2026-06-07
     - name: 雪萌の小窝
       link: xuemeng.work
       cover: https://xuemeng.work/wp-content/uploads/2026/02/icon.jpg
