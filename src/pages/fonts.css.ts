@@ -1,24 +1,52 @@
 export async function GET() {
-    const isDev = import.meta.env.DEV;
+    const isDev = import.meta.env.DEV 
 
     const fullFontType = "ttf";
     const subSetType = "woff2";
 
-    // 字重配置（与脚本中的保持一致）
+    // 字重配置（与脚本中的保持一致） 
     const fontWeights = [
-        { family: 'Yozai-Light', file: 'yozai/Yozai-Light', weight: 300 },
-        { family: 'Yozai-Regular', file: 'yozai/Yozai-Regular', weight: 400 },
-        { family: 'Yozai-Medium', file: 'yozai/Yozai-Medium', weight: 500 },
-        { family: 'LXGWWenKaiMonoGB-Light', file: 'lxgw-wenkai-gb/LXGWWenKaiMonoGB-Light', weight: 300 },
-        { family: 'LXGWWenKaiMonoGB-Regular', file: 'lxgw-wenkai-gb/LXGWWenKaiMonoGB-Regular', weight: 400 },
-        { family: 'LXGWWenKaiMonoGB-Medium', file: 'lxgw-wenkai-gb/LXGWWenKaiMonoGB-Medium', weight: 500 },
-        { family: 'JetBrainsMono-Light', file: 'jetbrains-mono/JetBrainsMono-Light', weight: 300 },
-        { family: 'JetBrainsMono-Medium', file: 'jetbrains-mono/JetBrainsMono-Medium', weight: 500 },
-        { family: 'JetBrainsMono-Regular', file: 'jetbrains-mono/JetBrainsMono-Regular', weight: 400 },
-        { family: 'JetBrainsMono-Thin', file: 'jetbrains-mono/JetBrainsMono-Thin', weight: 200 },
+        { family: 'Yozai'           , file: 'yozai/Yozai-Light'                              , weight: 300, style: "normal", },
+        { family: 'Yozai'           , file: 'yozai/Yozai-Regular'                            , weight: 400, style: "normal", },
+        { family: 'Yozai'           , file: 'yozai/Yozai-Medium'                             , weight: 500, style: "normal", },
+        { family: 'LXGWWenKaiMonoGB', file: 'lxgw-wenkai-gb/LXGWWenKaiMonoGB-Light'          , weight: 300, style: "normal", },
+        { family: 'LXGWWenKaiMonoGB', file: 'lxgw-wenkai-gb/LXGWWenKaiMonoGB-Regular'        , weight: 400, style: "normal", },
+        { family: 'LXGWWenKaiMonoGB', file: 'lxgw-wenkai-gb/LXGWWenKaiMonoGB-Medium'         , weight: 500, style: "normal", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-Regular'           , weight: 400, style: "normal", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-SemiBold'          , weight: 600, style: "normal", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-SemiBoldItalic'    , weight: 600, style: "italic", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-Thin'              , weight: 100, style: "normal", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-ThinItalic'        , weight: 100, style: "italic", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-Bold'              , weight: 700, style: "normal", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-BoldItalic'        , weight: 700, style: "italic", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-ExtraBold'         , weight: 800, style: "normal", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-ExtraBoldItalic'   , weight: 800, style: "italic", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-ExtraLight'        , weight: 200, style: "normal", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-ExtraLightItalic'  , weight: 200, style: "italic", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-Italic'            , weight: 400, style: "italic", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-Light'             , weight: 300, style: "normal", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-LightItalic'       , weight: 300, style: "italic", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-Medium'            , weight: 500, style: "normal", },
+        { family: 'JetBrainsMono'   , file: 'jetbrains-mono/JetBrainsMono-MediumItalic'      , weight: 500, style: "italic", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-Bold'            , weight: 700, style: "normal", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-BoldItalic'      , weight: 700, style: "italic", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-ExtraBold'       , weight: 800, style: "normal", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-ExtraBoldItalic' , weight: 800, style: "italic", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-ExtraLight'      , weight: 200, style: "normal", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-ExtraLightItalic', weight: 200, style: "italic", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-Italic'          , weight: 400, style: "italic", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-Light'           , weight: 300, style: "normal", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-LightItalic'     , weight: 300, style: "italic", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-Medium'          , weight: 500, style: "normal", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-MediumItalic'    , weight: 500, style: "italic", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-Regular'         , weight: 400, style: "normal", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-SemiBold'        , weight: 600, style: "normal", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-SemiBoldItalic'  , weight: 600, style: "italic", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-Thin'            , weight: 100, style: "normal", },
+        // { family: 'JetBrainsMonoNL' , file: 'jetbrains-mono/JetBrainsMonoNL-ThinItalic'      , weight: 100, style: "italic", },
     ];
 
-    const fontFaces = fontWeights.map(({ family, file, weight }) => {
+    const fontFaces = fontWeights.map(({ family, file, weight, style }) => {
         const url = isDev
             ? `/fonts/${file}.${fullFontType}`
             : `__FONT_HASH_${family}__`;
@@ -26,7 +54,7 @@ export async function GET() {
     font-family: '${family}';
     src: url('${url}') format('${subSetType}');
     font-weight: ${weight};
-    font-style: normal;
+    font-style: ${style};
     font-display: swap;
 }`;
     }).join('\n');
@@ -37,7 +65,8 @@ ${fontFaces}
 
 /* 应用全局字体 */
 * {
-    font-family: 'JetBrainsMono-Regular', 'LXGWWenKaiMonoGB-Regular';
+    font-family: 'JetBrainsMono', 'LXGWWenKaiMonoGB';
+    line-height: 1.5rem
 }
 `;
 
