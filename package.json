@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "check": "astro check",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build && node scripts/subset-font.mjs && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "type-check": "tsc --noEmit --isolatedDeclarations",
@@ -73,8 +73,11 @@
     "@types/markdown-it": "^14.1.2",
     "@types/mdast": "^4.0.4",
     "@types/sanitize-html": "^2.16.0",
+    "glob": "^13.0.6",
+    "jsdom": "^29.1.1",
     "postcss-import": "^16.1.1",
-    "postcss-nesting": "^13.0.2"
+    "postcss-nesting": "^13.0.2",
+    "subset-font": "^2.5.0"
   },
   "packageManager": "pnpm@9.14.4"
 }
