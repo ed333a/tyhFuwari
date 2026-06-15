@@ -7,7 +7,7 @@ siteConfig:
   description: 分享单片机、FPGA 开发，和 PCB 设计经验，记录嵌入式开发路上的成长点滴。
   locale: zh_CN # 站点语言
   siteUrl: https://blog.tyh123.top  # 此站点地址在文章底部版权内容中用到
-  
+
   # 文章底部的许可证信息
   page-width: 75rem
   license:
@@ -34,6 +34,23 @@ siteConfig:
     pagePrefix: "pages/p"       # 分页地址的前缀，如 page1 表示第一页, page2 表示第二页, 以此类推, 注意不要有空格
     pageSuffix: ""              # 后缀
     page1-redirect-root: true   # 是否将第一页重定向到根页面
+
+#######################################
+# 友链交换页面的信息
+#######################################
+exchange:
+  - name: 站点名称
+    value: 硬件日记
+  - name: 站点地址
+    value: https://blog.tyh123.top
+  - name: 站点封面
+    value: https://blog.tyh123.top/img/site_cover.jpg
+  - name: 站点头像
+    value: https://blog.tyh123.top/img/avatar.jpg
+  - name: 站点介绍(长)
+    value: 分享单片机、FPGA 开发，和 PCB 设计经验，记录嵌入式开发路上的成长点滴。
+  - name: 站点介绍(短)
+    value: 记录嵌入式学习过程。
 
 #######################################
 # 社交媒体链接，显示在页面左侧的个人信息中

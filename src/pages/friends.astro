@@ -3,160 +3,304 @@ import LayoutWithoutSideBar from "@layouts/LayoutWithoutSideBar.astro"
 import { friendLinks } from "@/types/cfg-frlink"
 import { getImageUrl } from "@/utils/get-bg-url"
 import { Icon } from "astro-icon/components"
+import { exchangeConfig,commentCfg } from "@/types/config";
+import ArtalkComment from "@components/ArtalkComment.astro";
 ---
 
 <LayoutWithoutSideBar>
-    <div    id="exchange-guide" 
-            class="
-                mt-[30px]
-                bg-white/80 dark:bg-[rgba(18,18,18,0.8)] rounded-[1.25rem] py-[0.85rem] px-[1.5rem]
-                mb-[2rem] flex item-center wrap justify-between gap-[1rem] 
-                shadow-[0_2px_8px_rgba(0,0,0,0.03),0_1px_2px_rgba(0,0,0,0.05)]
-                transition-all duration-200 ease-in
-                dark:hover:translate-y-[-2px] hover:translate-y-[-2px]
-            "
-    >
-        <div id="guide-text" class="flex items-center gap-[0.65rem] wrap text-[0.95rem] text-slate-900 dark:text-slate-100">
-            <span class="text-[1.5rem] drop-shadow-[0_1px_2px_rgba(0,0,0,0.1)]">🤝✨</span>
-            <span>与更多优质站点互链，扩大影响力</span>
-        </div>
-        <a href="/exchange" rel="noopener noreferrer"
-            class="
-                bg-neutral-100 text-slate-600 dark:bg-slate-700 dark:text-neutral-100 no-underline px-[1.3rem] py-[0.5rem]
-                rounded-full font-[600] text-[0.9rem] inline-flex items-center
-                gap-[0.5rem] shadow-[0_2px_6px_rgba(0,0,0,0.2)] dark:shadow-[0_2px_6px_rgba(255,255,255,0.1)]
-                border border-solid border-[rgba(255,255,255,0.65)] dark:border-[rgba(3,35,120,0.65)]
-            "
-        >
-            📝 前往友链交换页面
-            <span>→</span>
-        </a>
-    </div> <!-- exchange-guide -->
+    <!-- 交换友链说明区域 -->
+    <div id="exchange-guide" class="exchange-guide">
+            <div id="guide-text" class="guide-text">
+                <!-- 本站信息卡片 -->
+                <div id="site-info-wrapper" class="card-base h-[762px] info-wrapper p-[1.5rem] bg-slate border border-solid border-slate-300">
+                    <p class="text-2 font-bold tracking-wide text-slate-500">MY SITE</p>
+                    <p class="text-[1.25rem] font-bold mt-2">站点信息</p>
+                    <p class="mb-3 mt-5 opacity-90 text-[0.9rem]">如果你愿意将我添加到你的网站中，可以使用下面的信息。</p>
 
-    <div id="fr-lists" class="card-base mt-[20px] relative-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 transition-all duration-300">
-        <!-- 头部内容区域 -->
-        <div class="text-center mb-12">
-            <h1 class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r 
-            from-slate-800 via-indigo-800 to-purple-800
-            dark: from-cyan-100 via-indigo-400 to-rose-4 00
-            bg-clip-text text-transparent tracking-tight 
-            drop-shadow-sm
-        ">
-                🔗 友情链接
-            </h1>
-            <div class="inline-flex items-center gap-2 mt-5 px-5 py-1.5 
-                bg-white/40 dark:bg-indigo-800 backdrop-blur-md rounded-full 
-                text-indigo-800 dark:text-neutral-100
-                text-sm font-medium border border-white/50 shadow-sm"
-            >
-                <span>✨</span> 一群非常优秀的小伙伴们
+                    <div id="site-info" class="site-info flex flex-col gap-3">
+                        {
+                            exchangeConfig.map((cfg) => (
+                                <div class="bg-slate-300/60 dark:bg-slate-800/60 flex items-center justify-between rounded-xl border border-solid border-slate-300">
+                                    <div class="ml-[20px] my-[10px] w-full">
+                                        <p class="text-[0.75rem] opacity-70">{cfg.name}</p>
+                                        <p class="text-[0.8rem] font-medium break-all">{cfg.value}</p>
+                                    </div>
+                                    <copy-btn data-message={cfg.value}>
+                                        <button class="copy-btn relative overflow-hidden">
+                                            <Icon name="fa6-solid:copy" class="copy-icon transition-all duration-300" />
+                                            <Icon name="fa6-solid:check" class="check-icon absolute inset-0 m-auto scale-50 opacity-0 transition-all duration-300 text-emerald-500" />
+                                        </button>
+                                    </copy-btn>
+                                </div>
+                            ))
+                        }
+                    </div>
+
+                    <div class="mt-[1rem] border border-solid border-slate-300"></div>
+
+                    <div class="p-[1.25rem] w-full h-[50px] flex items-center mt-[1rem] bg-slate-300/60 dark:bg-slate-800/60 py-1 rounded-xl w-fit border border-solid border-slate-300">   
+                        <p>若你觉得较长版本的站点介绍过长，可以选择较短版本的内容。</p>
+                    </div>
+                </div>
+
+                <!-- 申请格式说明 -->
+                <div class="info-wrapper">
+                    <div class="card-base p-[1.5rem] bg-slate border border-solid border-slate-300">
+                        <p class="text-2 font-bold tracking-wide text-slate-500">FORMAT</p>
+                        <p class="text-[1.25rem] font-bold mt-2">申请格式</p>
+                        <p class="mb-3 mt-5 opacity-90 text-[0.9rem]">在下方评论区中使用以下格式提交信息即可。</p>
+                        <div    id="format-wrapper" 
+                                class="
+                                    mt-[10px] text-[0.9rem] border border border-solid border-slate-300 rounded-xl
+                                    p-[1.25rem] mb-3 bg-slate-300/60 dark:bg-slate-800/60
+                                "
+                        >
+                            <p>站点名称: [贵站的站点名称]</p>
+                            <p>站点地址: [贵站的站点地址]</p>
+                            <p>站点封面: [贵站的站点封面]</p>
+                            <p>站点头像: [贵站的站点头像]</p>
+                            <p>站点介绍: [贵站的站点介绍]</p>
+                        </div>
+                        <div class="text-[0.75rem] p-[1.25rem] bg-slate-300/60 dark:bg-slate-800/60 py-1 rounded-xl w-fit
+                                    border border-solid border-slate-300"
+                            >
+                            <p>
+                            关于封面: 若你的站点没有封面, 则采用你站点的头像作为封面。
+                            </p>
+                            <p class="mt-[5px]">
+                                提交后会在<b>三个工作日内</b>审核通过并更新页面内容。若信息不完整或暂未满足要求，
+                                我会通过评论区向贵站说明原因，后续也欢迎贵站继续申请。
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="card-base p-[1.5rem] mt-[10px] bg-slate border border-solid border-slate-300">
+                        <p class="text-2 font-bold tracking-wide text-slate-500">FLOW</p>
+                        <p class="text-[1.25rem] font-bold mt-2">申请流程</p>
+                        <div class="space-y-0 flex-1 mt-[20px]">
+                            <div class="flex flex-row gap-3">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-7 h-7 rounded-full bg-slate-300/60 dark:bg-slate-800/60 text-slate-900 dark:text-slate-100 text-xs font-bold flex items-center justify-center shrink-0">1</div>
+                                    <div class="w-0.5 flex-1 bg-gray-500 my-1.5"></div>
+                                </div>
+                                <div class="pb-4">
+                                    <p class="font-semibold text-sm mb-1">添加本站友链</p>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                                        请先在贵站友链页面添加本站信息，可直接复制左侧各字段
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-3">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-7 h-7 rounded-full bg-slate-300/60 dark:bg-slate-800/60 text-slate-900 dark:text-slate-100 text-xs font-bold flex items-center justify-center shrink-0">2</div>
+                                    <div class="w-0.5 flex-1 bg-gray-500 my-1.5"></div>
+                                </div>
+                                <div class="pb-4">
+                                    <p class="font-semibold text-sm mb-1">评论区留言</p>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                                        在评论区留言贵站的站点信息，申请模板在上方，可直接复制。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-row gap-3">
+                                <div class="flex flex-col items-center">
+                                    <div class="w-7 h-7 rounded-full bg-slate-300/60 dark:bg-slate-800/60 text-slate-900 dark:text-slate-100 text-xs font-bold flex items-center justify-center shrink-0">3</div>
+                                </div>
+                                <div class="pb-4">
+                                    <p class="font-semibold text-sm mb-1">等待评论回复</p>
+                                    <p class="text-xs text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                                        我会在<b>三个工作日内</b>审核通过并更新页面内容。审核通过后会在评论区回复你，同时也会有一封通知邮件发送到你的邮箱中。
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="text-slate-700 dark:text-slate-100 max-w-2xl mx-auto 
-                mt-4 text-base font-medium drop-shadow-sm"
-            >
-                很高兴与优秀的你们相遇于此，愿我们彼此照亮，在各自的道路上走得更远。
-            </p>
+    </div>
+
+    <!-- 友情链接主列表区域  -->
+    <div id="fr-lists" class="card-base mt-[20px] relative-content max-w-7xl 
+            mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 transition-all duration-300"
+    >
+        <!-- 头部标题区域 -->
+        <div class="text-center mb-12">
+        <h1
+            class="text-4xl md:text-5xl font-extrabold bg-gradient-to-r 
+            from-slate-800 via-indigo-800 to-purple-800
+            dark:from-cyan-100 via-indigo-400 to-rose-400
+            bg-clip-text text-transparent tracking-tight 
+            drop-shadow-sm"
+        >
+            🔗 友情链接
+        </h1>
+        <div
+            class="inline-flex items-center gap-2 mt-5 px-5 py-1.5 
+            bg-white/40 dark:bg-indigo-800 backdrop-blur-md rounded-full 
+            text-indigo-800 dark:text-neutral-100
+            text-sm font-medium border border-white/50 shadow-sm"
+        >
+            <span>✨</span> 一群非常优秀的小伙伴们
+        </div>
+        <p
+            class="text-slate-700 dark:text-slate-100 max-w-2xl mx-auto 
+            mt-4 text-base font-medium drop-shadow-sm"
+        >
+            很高兴与优秀的你们相遇于此，愿我们彼此照亮，在各自的道路上走得更远。
+        </p>
         </div>
 
-        <!-- 分组 -->
+        <!-- 友链分组容器 -->
         <div id="fr-groups-wrapper">
             {
                 friendLinks.map((group) => (
                     <div id="fr-group-wrapper">
-                        {/* 分组顶部的介绍 */}
+                        <!-- 分组标题与描述 -->
                         <div class="border-l-4 border-[var(--primary)] pl-5 mb-6">
-                            <div class="flex items-center gap-3 flex-wrap">
+                            <div class="flex items-center flex-wrap gap-3">
                                 <h2 class="text-2xl md:text-3xl font-bold text-slate-800 
                                     dark:text-slate-100 flex items-center gap-2 drop-shadow-sm"
                                 >{group.name}</h2>
-
                                 {
-                                    group.tag && 
-                                    <span class="group-tag">
-                                        {group["link-list"].length}{group.tag}
-                                    </span>
+                                    group.tag && (
+                                        <span class="group-tag">{group["link-list"].length}{group.tag}</span>
+                                    )
                                 }
                             </div>
-
                             <p class="group-desc">{group.desc}</p>
                         </div>
 
-                        {/* 分组下的站点列表 */}
+                        <!-- 当前分组站点卡片列表 -->
                         <div class="flex flex-wrap gap-[1.5rem] mb-[3rem]">
-                            {
-                                group["link-list"].length === 0 && 
-                                <div class="w-full flex justify-center">
-                                    <div class="w-fit card-base p-[20px] font-[900]">
-                                        <h1 class="text-[20px] text-indigo-500"> 好邻居正在招募中…… </h1>
-                                    </div>
+                        {
+                            group["link-list"].length === 0 && (
+                            <div class="w-full flex justify-center">
+                                <div class="w-fit card-base p-[20px] font-[900]">
+                                <h1 class="text-[20px] text-indigo-500"> 好邻居正在招募中…… </h1>
                                 </div>
-                            }
+                            </div>
+                            )
+                        }
 
-                            {
-                                group["link-list"].map((link) => (
-                                    <div id="fr-card" class="fr-card">
-                                        <div id="site-cover" class="site-cover" style={`background-image: url(${getImageUrl(link.cover)});`}></div>
-                                        <div id="card-content" class="card-content">
-                                            <div>
-                                                <div id="header-content" class="header-content">
-                                                    {
-                                                        link.icon &&
-                                                        <div id="site-icon" class="site-icon" style={`background-image: url(${getImageUrl(link.icon)});`}></div>
-                                                    }
-                                                    <div id="site-title-wrapper" class="w-full">
-                                                        <div id="site-title" class="site-title" title={link.name}>{link.name}</div>
-                                                        <a class="site-domain" href={`https://${link.link}`} target="_blank" rel="noopener noreferrer">
-                                                            {link.link}
-                                                        </a>
-                                                    </div>
+                        {
+                            group["link-list"].map((link) => (
+                                <div id="fr-card" class="fr-card">
+                                    <div id="site-cover" class="site-cover" style={`background-image: url(${getImageUrl(link.cover)});`}></div>
+                                    <div id="card-content" class="card-content">
+                                        <div>
+                                            <div id="header-content" class="header-content">
+                                                {
+                                                    link.icon && (
+                                                    <div
+                                                        id="site-icon"
+                                                        class="site-icon"
+                                                        style={`background-image: url(${getImageUrl(link.icon)});`}
+                                                    ></div>
+                                                    )
+                                                }
+                                                <div id="site-title-wrapper" class="w-full">
+                                                    <div id="site-title" class="site-title" title={link.name}>{link.name}</div>
+                                                    <a class="site-domain" href={`https://${link.link}`} target="_blank" rel="noopener noreferrer">{link.link}</a>
                                                 </div>
-                                                <div class="site-description" title={link.descr}>{link.descr}</div>
                                             </div>
-                                            <div id="card-footer" class="site-footer">
-                                                <div id="site-time" class="site-time"><Icon name="fa6-solid:calendar"/>{link.date}</div>
-                                                <a id="visit-link" class="visit-link" target="_blank" href={`https://${link.link}`} rel="noopener noreferrer">
-                                                    <span>访问</span>
-                                                    <span class="visit-animation inline-block">→</span>
-                                                </a>
+                                            <div class="site-description" title={link.descr}>{link.descr}</div>
+                                        </div>
+                                        <div id="card-footer" class="site-footer">
+                                            <div id="site-time" class="site-time">
+                                                <Icon name="fa6-solid:calendar" />
+                                                {link.date}
                                             </div>
+                                            <a id="visit-link" class="visit-link" target="_blank" href={`https://${link.link}`} rel="noopener noreferrer">
+                                                <span>访问</span>
+                                                <span class="visit-animation inline-block">→</span>
+                                            </a>
                                         </div>
                                     </div>
-                                ))
-                            }
+                                </div>
+                            ))
+                        }
                         </div>
                     </div>
                 ))
             }
         </div>
-    </div> <!-- fr-lists -->
+    </div>
+
+    <!-- 评论区 -->
+     {
+        commentCfg.enable && commentCfg.use.toLowerCase() === "artalk" &&
+        <div id="comment-wrapper" class="mt-[20px] p-5 card-base">
+            <ArtalkComment></ArtalkComment>
+        </div>
+    }
 </LayoutWithoutSideBar>
 
+<script>
+    class CopyBtn extends HTMLElement {
+        connectedCallback() {
+            const btn = this.querySelector('.copy-btn');
+            const copyIcon = this.querySelector('.copy-icon');
+            const checkIcon = this.querySelector('.check-icon');
+            const ripple = this.querySelector('.ripple');
+            const copyText = this.dataset.message || "undefined";
+
+            if (!btn || !copyIcon || !checkIcon) return;
+
+            btn.addEventListener('click', (e) => {
+                // 复制文本
+                navigator.clipboard.writeText(copyText);
+
+                // 图标切换动画
+                copyIcon.classList.add('scale-0', 'opacity-0', 'rotate-180');
+                checkIcon.classList.remove('scale-50', 'opacity-0');
+                checkIcon.classList.add('scale-100', 'opacity-100');
+
+                // 1.5 秒恢复原状
+                setTimeout(() => {
+                copyIcon.classList.remove('scale-0', 'opacity-0', 'rotate-180');
+                checkIcon.classList.remove('scale-100', 'opacity-100');
+                checkIcon.classList.add('scale-50', 'opacity-0');
+                }, 1500);
+            })
+        }
+    }
+
+    customElements.define('copy-btn', CopyBtn);
+</script>
+
 <style>
+    .copy-btn {
+        @apply mx-[10px] px-[10px] py-[10px] bg-slate-200 dark:bg-slate-700 rounded-xl
+        border border-solid border-indigo-200 dark:border-indigo-600
+        cursor-pointer active:scale-90 transition-transform duration-150;
+    }
+    .copy-btn:active {
+        transform: scale(0.92);
+    }
+    .copy-icon{
+        @apply w-5 h-5 transition-all ease-out text-slate-500;
+    }
+
     .visit-link {
         @apply text-[0.74rem] border border-solid rounded-full mt-[0.5rem] px-[15px];
     }
-
     .visit-animation {
         transition: transform 0.2s ease;
     }
-
     .visit-link:hover .visit-animation {
         transform: translateX(2px);
     }
-
     .site-footer {
-        @apply flex flex-row items-center justify-between border-t border-solid text-slate-100;
+        @apply flex flex-row items-center justify-between border-t border-solid border-white/20 text-slate-100 pt-2 mt-2;
     }
-
     .site-time {
-        @apply text-[0.74rem] flex items-center gap-[0.3rem] pt-[0.5rem] tracking-[0.3px];
+        @apply text-[0.74rem] flex items-center gap-[0.3rem] tracking-[0.3px];
     }
 
     .site-description {
         @apply text-[0.72rem] leading-[1.35] mx-[0.5rem] mb-[0.5rem] line-clamp-2 break-words
-        rounded-[8px] text-slate-100;
+        rounded-[8px] text-slate-100 opacity-95;
     }
-
     .site-domain {
         font-family: 'SF Mono', 'Fira Code', monospace;
         @apply mt-[5px] font-[100] text-[12px] inline-block px-[0.6rem]
@@ -165,16 +309,13 @@ import { Icon } from "astro-icon/components"
         transition-colors duration-200 no-underline line-clamp-1;
         backdrop-filter: brightness(0.8);
     }
-
     .site-title {
         @apply w-full pl-2 text-[1.05rem] font-[700] tracking-[-0.2px] leading-[1.3] 
         break-words overflow-hidden text-neutral-100 line-clamp-1;
     }
-
     .site-icon {
-        @apply bg-cover p-[1.6rem] rounded-full border-[2px] border-slate-200;
+        @apply bg-cover p-[1.6rem] rounded-full border-[2px] border-slate-200 dark:border-slate-600;
     }
-
     .header-content {
         @apply flex items-center gap-[0.7rem] mb-[0.6rem] flex-nowrap 
         rounded-[15px] px-[10px];
@@ -182,20 +323,17 @@ import { Icon } from "astro-icon/components"
 
     .fr-card {
         flex: 0 0 calc((100% - (3 * 1.5rem)) / 4); /* 4 个卡片, 3 个间隙 */
-        @apply bg-white rounded-[1.25rem] overflow-hidden relative
+        @apply bg-white dark:bg-slate-800 rounded-[1.25rem] overflow-hidden relative
         transition-all duration-[250ms] ease-in cursor-pointer
-        hover:translate-y-[-4px] dark:hover:translate-y-[-4px];
+        hover:-translate-y-[4px] dark:hover:-translate-y-[4px];
     }
-
     .fr-card:hover .site-cover {
         transform: scale(1.03);
     }
-
     .site-cover {
         @apply absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat
         transition-transform duration-[400ms] ease-in;
     }
-
     .card-content {
         @apply relative z-[2] px-[1.2rem] py-[1rem] h-full flex 
         flex-col justify-between rounded-[1.25rem] backdrop-blur-[2px];
@@ -209,30 +347,49 @@ import { Icon } from "astro-icon/components"
         bg-white/30 dark:bg-white/10 backdrop-blur-sm 
         rounded-xl px-4 py-2 border border-white/20;
     }
-    
     .group-tag {
-        @apply text-xs font-semibold bg-purple-200 backdrop-blur-sm 
-        text-indigo-500 rounded-full px-3 py-1 border border-white/40
+        @apply text-xs font-semibold bg-purple-200 dark:bg-purple-900/60 backdrop-blur-sm 
+        text-indigo-500 dark:text-purple-200 rounded-full px-3 py-1 border border-white/40
         shadow-[5px_5px_20px_rgba(0,0,0,0.15)]
         dark:shadow-[5px_5px_20px_rgba(255,255,255,0.15)];
     }
 
-    /* 响应式 */
+    .info-wrapper {
+        width: 50%;
+    }   
+    .exchange-guide {
+        @apply mt-[30px] mb-[2rem] flex flex-wrap items-center justify-between gap-[1rem]
+        bg-white/80 dark:bg-[rgba(18,18,18,0.8)] rounded-[1.25rem] py-[1.5rem] px-[1.5rem]
+        shadow-[0_2px_8px_rgba(0,0,0,0.03),0_1px_2px_rgba(0,0,0,0.05)]
+        transition-all duration-200 ease-in hover:-translate-y-[2px] dark:hover:-translate-y-[2px];
+    }
+    .guide-text {
+        @apply flex flex-row items-center gap-[0.65rem] text-[0.95rem] text-slate-900 
+        dark:text-slate-100 w-full;
+    }
+
     @media (max-width: 1060px) {
         .fr-card {
-            flex: 0 0 calc((100% - (2 * 1.5rem)) / 3);
+        flex: 0 0 calc((100% - (2 * 1.5rem)) / 3);
         }
     }
-
     @media (max-width: 800px) {
         .fr-card {
-            flex: 0 0 calc((100% - (1 * 1.5rem)) / 2);
+        flex: 0 0 calc((100% - (1 * 1.5rem)) / 2);
         }
     }
-
     @media (max-width: 560px) {
         .fr-card {
-            flex: 0 0 100%;
+        flex: 0 0 100%;
+        }
+    }
+    @media (max-width: 920px) {
+        .guide-text {
+            flex-direction: column;
+        }
+
+        .info-wrapper {
+            width: 100%;
         }
     }
 </style>

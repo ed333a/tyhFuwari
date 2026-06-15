@@ -9,17 +9,17 @@ const themeColorSchema = z.object({
     "card-bg": z.string().default("#ffffff"),
 });
 
-const sitepageSchema = z.object({
-    enable: z.boolean().default(true),
-    link: z.string().default(""),
-});
+const exchangeConfigSchema = z.array(z.object({
+    name: z.string(),
+    value: z.string(),
+}))
 
 const siteConfigSchema = z.object({
     author: z.string().default("Your Name"),
     avatar: z.string().default("assets/images/demo-avatar.png"),
-    title: z.string().default("Astro little-sweet"),
-    subtitle: z.string().default("A static blog template built with Astro"),
-    description: z.string().default("A static blog template built with Astro, and with human-friendly configuration.",),
+    title: z.string(),
+    subtitle: z.string(),
+    description: z.string(),
     locale: z.string().default("zh_CN"),
     siteUrl: z.string().default("https://example.com"),
     "page-width": z.string().default("75rem"),
@@ -177,6 +177,7 @@ const commentCfgSchema = z.object({
 
 const configSchema = z.object({
     siteConfig: siteConfigSchema,
+    exchange: exchangeConfigSchema,
     dev: devConfigSchema,
     beauty: beautyConfigSchema,
     nav: navConfigSchema,
@@ -187,6 +188,7 @@ const configSchema = z.object({
 
 type Config = z.infer<typeof configSchema>;
 type SiteConfig = z.infer<typeof siteConfigSchema>;
+type ExchangeConfig = z.infer<typeof exchangeConfigSchema>;
 type DevConfig = z.infer<typeof devConfigSchema>;
 type BeautyConfig = z.infer<typeof beautyConfigSchema>;
 type NavConfig = z.infer<typeof navConfigSchema>;
@@ -195,6 +197,7 @@ type SocialLinks = z.infer<typeof socialLinksSchema>;
 type CommentConfig = z.infer<typeof commentCfgSchema>;
 
 export const config: Config = configSchema.parse(rawConfig);
+export const exchangeConfig: ExchangeConfig = config.exchange;
 export const devConfig: DevConfig = config.dev;
 export const siteConfig: SiteConfig = config.siteConfig;
 export const beautyConfig: BeautyConfig = config.beauty;
