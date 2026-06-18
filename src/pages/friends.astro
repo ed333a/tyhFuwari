@@ -306,12 +306,12 @@ import ArtalkComment from "@components/ArtalkComment.astro";
         @apply mt-[5px] font-[100] text-[12px] inline-block px-[0.6rem]
         rounded-full mx-[0.2rem] w-full text-amber-500 
         hover:text-amber-300 border border-solid border-[rgba(255,255,200,0.2)]
-        transition-colors duration-200 no-underline line-clamp-1;
+        transition-colors duration-200 no-underline line-clamp-1 text-ellipsis max-w-[150px];
         backdrop-filter: brightness(0.8);
     }
     .site-title {
         @apply w-full pl-2 text-[1.05rem] font-[700] tracking-[-0.2px] leading-[1.3] 
-        break-words overflow-hidden text-neutral-100 line-clamp-1;
+        break-words overflow-hidden text-neutral-100 line-clamp-1 text-ellipsis max-w-[150px];
     }
     .site-icon {
         @apply bg-cover p-[1.6rem] rounded-full border-[2px] border-slate-200 dark:border-slate-600;
