@@ -6,6 +6,12 @@
     (按照收录时间排序)
   tag: ' 位好朋友'
   link-list:
+    - name: Luquiesceneの小屋
+      link: luq-blog.xyz
+      cover: https://luq-blog.xyz/avatar.webp
+      icon: https://luq-blog.xyz/avatar.webp
+      descr: 'To be or not to be: that is the question.'
+      date: 2026-06-22
     - name: evil0knight's Blog
       link: evil0knight.github.io/quartz/
       cover: https://avatars.githubusercontent.com/evil0knight

@@ -12,7 +12,7 @@ import ArtalkComment from "@components/ArtalkComment.astro";
     <div id="exchange-guide" class="exchange-guide">
             <div id="guide-text" class="guide-text">
                 <!-- 本站信息卡片 -->
-                <div id="site-info-wrapper" class="card-base h-[762px] info-wrapper p-[1.5rem] bg-slate border border-solid border-slate-300">
+                <div id="site-info-wrapper" class="card-base h-[815px] info-wrapper p-[1.5rem] bg-slate border border-solid border-slate-300">
                     <p class="text-2 font-bold tracking-wide text-slate-500">MY SITE</p>
                     <p class="text-[1.25rem] font-bold mt-2">站点信息</p>
                     <p class="mb-3 mt-5 opacity-90 text-[0.9rem]">如果你愿意将我添加到你的网站中，可以使用下面的信息。</p>
@@ -70,6 +70,9 @@ import ArtalkComment from "@components/ArtalkComment.astro";
                             <p class="mt-[5px]">
                                 提交后会在<b>三个工作日内</b>审核通过并更新页面内容。若信息不完整或暂未满足要求，
                                 我会通过评论区向贵站说明原因，后续也欢迎贵站继续申请。
+                            </p>
+                            <p class="mt-[5px]">
+                                关于站点名称: 如果站点名称过长的话, 为了整体显示效果可能会省略掉部分内容, 还请见谅。
                             </p>
                         </div>
                     </div>
@@ -198,7 +201,7 @@ import ArtalkComment from "@components/ArtalkComment.astro";
                                                     ></div>
                                                     )
                                                 }
-                                                <div id="site-title-wrapper" class="w-full">
+                                                <div id="site-title-wrapper" class="w-full site-title-wrapper max-w-[150px]">
                                                     <div id="site-title" class="site-title" title={link.name}>{link.name}</div>
                                                     <a class="site-domain" href={`https://${link.link}`} target="_blank" rel="noopener noreferrer">{link.link}</a>
                                                 </div>
@@ -306,12 +309,12 @@ import ArtalkComment from "@components/ArtalkComment.astro";
         @apply mt-[5px] font-[100] text-[12px] inline-block px-[0.6rem]
         rounded-full mx-[0.2rem] w-full text-amber-500 
         hover:text-amber-300 border border-solid border-[rgba(255,255,200,0.2)]
-        transition-colors duration-200 no-underline line-clamp-1 text-ellipsis max-w-[150px];
+        transition-colors duration-200 no-underline line-clamp-1 text-ellipsis;
         backdrop-filter: brightness(0.8);
     }
     .site-title {
         @apply w-full pl-2 text-[1.05rem] font-[700] tracking-[-0.2px] leading-[1.3] 
-        break-words overflow-hidden text-neutral-100 line-clamp-1 text-ellipsis max-w-[150px];
+        break-words overflow-hidden text-neutral-100 line-clamp-1 text-ellipsis;
     }
     .site-icon {
         @apply bg-cover p-[1.6rem] rounded-full border-[2px] border-slate-200 dark:border-slate-600;
@@ -380,7 +383,10 @@ import ArtalkComment from "@components/ArtalkComment.astro";
     }
     @media (max-width: 560px) {
         .fr-card {
-        flex: 0 0 100%;
+            flex: 0 0 100%;
+        }
+        .site-title-wrapper {
+            @apply max-w-[200px];
         }
     }
     @media (max-width: 920px) {
