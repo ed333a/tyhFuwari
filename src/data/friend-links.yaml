@@ -6,6 +6,12 @@
     (按照收录时间排序)
   tag: ' 位好朋友'
   link-list:
+    - name: 阿飘
+      link: ligeaaa.github.io
+      cover: http://magic-knowledge.top/img/%25E5%25A4%25B4%25E5%2583%258F3.jpg
+      icon: http://magic-knowledge.top/img/%25E5%25A4%25B4%25E5%2583%258F3.jpg
+      descr: '天还没亮呢，有的是时间！'
+      date: 2026-09-02
     - name: Luquiesceneの小屋
       link: luq-blog.xyz
       cover: https://luq-blog.xyz/avatar.webp
